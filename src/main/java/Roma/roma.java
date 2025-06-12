@@ -1,6 +1,9 @@
 package Roma;
 
+import Roma.item.Moditems;
 import com.mojang.logging.LogUtils;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -37,6 +40,28 @@ public class roma
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
+
+
+
+
+
+
+
+
+
+
+        //Place Registers here for new items
+        Moditems.register(modEventBus);
+
+
+
+
+
+
+
+
+
+
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
@@ -52,7 +77,18 @@ public class roma
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(Moditems.IRONINGOT);
+            event.accept(Moditems.COBALTINGOT);
+            event.accept(Moditems.ALUMINUMINGOT);
+            event.accept(Moditems.CHROMIUMINGOT);
+            event.accept(Moditems.COPPERNGOT);
+            event.accept(Moditems.BRONZEINGOT);
+            event.accept(Moditems.STEELINGOT);
+            event.accept(Moditems.TININGOT);
+            event.accept(Moditems.ZINCINGOT);
+            event.accept(Moditems.GOLDINGOT);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
