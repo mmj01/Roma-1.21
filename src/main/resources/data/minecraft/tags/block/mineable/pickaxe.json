@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "rma:marble",
+    "rma:granite",
+    "rma:alabaster",
+    "rma:limestone",
+    "rma:rock",
+    "rma:basalt"
+
+  ]
+}

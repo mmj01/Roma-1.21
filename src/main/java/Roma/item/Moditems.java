@@ -31,7 +31,8 @@ public class Moditems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GOLDINGOT = ITEMS.register("goldingot",
             () -> new Item(new Item.Properties()));
-
+    public static final RegistryObject<Item> MARBLEVENEER = ITEMS.register("marbleveneer",
+            () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

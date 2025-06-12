@@ -8,5 +8,15 @@
   "item.rma.bronzeingot": "Bronze Ingot",
   "item.rma.steelingot": "Steel Ingot",
   "item.rma.zincingot": "Zinc Ingot",
-  "item.rma.goldingot": "Gold Ingot"
+  "item.rma.goldingot": "Gold Ingot",
+  "item.rma.marbleveneer": "Marble Upgrade",
+  "block.rma.marble": "Un-Cut Marble",
+  "block.rma.basalt": "Un-Cut Basalt",
+  "block.rma.limestone": "Un-Cut Limestone",
+  "block.rma.alabaster": "Un-Cut Alabaster",
+  "block.rma.granite": "Un-Cut Granite",
+  "block.rma.rock": "Stone"
+
+
+
 }

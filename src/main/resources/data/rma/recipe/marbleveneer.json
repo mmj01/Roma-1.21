@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "rma:marble"
+    }
+  },
+  "pattern": [
+    " A ",
+    " A ",
+    " A "
+  ],
+  "result": {
+    "count": 12,
+    "id": "rma:marble_veneer"
+  }
+}

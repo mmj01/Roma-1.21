@@ -1,5 +1,7 @@
 package Roma;
 
+import Roma.block.ModBlocks;
+import Roma.item.ModCreativeModeTabs;
 import Roma.item.Moditems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTab;
@@ -51,7 +53,11 @@ public class roma
 
 
         //Place Registers here for new items
+        ModCreativeModeTabs.register(modEventBus);
         Moditems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
+        //NEW REGISTERS
 
 
 
@@ -77,18 +83,7 @@ public class roma
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(Moditems.IRONINGOT);
-            event.accept(Moditems.COBALTINGOT);
-            event.accept(Moditems.ALUMINUMINGOT);
-            event.accept(Moditems.CHROMIUMINGOT);
-            event.accept(Moditems.COPPERNGOT);
-            event.accept(Moditems.BRONZEINGOT);
-            event.accept(Moditems.STEELINGOT);
-            event.accept(Moditems.TININGOT);
-            event.accept(Moditems.ZINCINGOT);
-            event.accept(Moditems.GOLDINGOT);
-        }
+
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
