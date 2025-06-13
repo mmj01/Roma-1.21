@@ -33,6 +33,14 @@ public class Moditems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> MARBLEVENEER = ITEMS.register("marbleveneer",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SILVERINGOT = ITEMS.register("silveringot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SUPERALLOYINGOT = ITEMS.register("superalloyingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> NICKELINGOT = ITEMS.register("nickelingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PLATINUMINGOT = ITEMS.register("platinumingot",
+            () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

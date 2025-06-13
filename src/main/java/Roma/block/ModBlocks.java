@@ -38,6 +38,39 @@ public class ModBlocks {
     public static final RegistryObject<Block> BASALT = registerBlock("basalt",
             ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
                     .strength(50f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> IRONORE = registerBlock("ironore",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(300f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> GOLDORE = registerBlock("goldore",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(300f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> ALUMINUMORE = registerBlock("aluminumore",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(200f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> COBALTORE = registerBlock("cobaltore",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(400f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> CHROMIUMORE = registerBlock("chromiumingot",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(500f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> TINORE = registerBlock("tinore",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(300f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> ZINCORE = registerBlock("zincore",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(300f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> COPPERORE = registerBlock("copperore",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(100f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SILVERORE = registerBlock("silverore",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(300f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> PLATINUMORE = registerBlock("platinumore",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(300f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> NICKELORE = registerBlock("niceklore",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(300f).explosionResistance(5f).requiresCorrectToolForDrops()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

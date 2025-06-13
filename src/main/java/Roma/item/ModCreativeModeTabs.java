@@ -29,7 +29,8 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
                 output.accept(Moditems.ZINCINGOT.get());
                 output.accept(Moditems.GOLDINGOT.get());
                 output.accept(Moditems.MARBLEVENEER.get());
-
+                output.accept(Moditems.SUPERALLOYINGOT.get());
+                output.accept(Moditems.SILVERINGOT.get());
 
                 
                 //BLOCKS ->

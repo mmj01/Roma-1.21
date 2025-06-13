@@ -15,8 +15,17 @@
   "block.rma.limestone": "Un-Cut Limestone",
   "block.rma.alabaster": "Un-Cut Alabaster",
   "block.rma.granite": "Un-Cut Granite",
-  "block.rma.rock": "Stone"
-
-
-
+  "block.rma.rock": "Stone",
+  "item.rma.superalloyingot": "Super Alloy Ingot",
+  "item.rma.silveringot": "Silver Ingot",
+  "block.rma.ironore": "Iron Ore",
+  "block.rma.copperore": "Copper Ore",
+  "block.rma.goldore": "Gold Ore",
+  "block.rma.cobaltore": "Cobalt Ore",
+  "block.rma.aluminumore": "Aluminum Ore",
+  "block.rma.nickelore": "Nickel Ore",
+  "block.rma.platinumore": "Platinum Ore",
+  "block.rma.silverore": "Silver Ore",
+  "block.rma.tinore": "Tin Ore",
+  "block.rma.zincore": "Zinc Ore"
 }

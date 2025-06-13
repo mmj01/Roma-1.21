@@ -6,7 +6,13 @@
     "rma:alabaster",
     "rma:limestone",
     "rma:rock",
-    "rma:basalt"
+    "rma:basalt",
+    "rma.ironore",
+    "rma.tinore",
+    "rma.goldore",
+    "rma.cobaltore",
+    "rma.nickelore",
+    "rma.platinumore"
 
   ]
 }
