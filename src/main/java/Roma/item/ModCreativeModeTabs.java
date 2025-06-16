@@ -31,6 +31,19 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
                 output.accept(Moditems.MARBLEVENEER.get());
                 output.accept(Moditems.SUPERALLOYINGOT.get());
                 output.accept(Moditems.SILVERINGOT.get());
+                output.accept(Moditems.NICKELINGOT.get());
+                output.accept(Moditems.PLATINUMINGOT.get());
+                output.accept(Moditems.RAWALUMINUM.get());
+                output.accept(Moditems.RAWCHROMIUM.get());
+                output.accept(Moditems.RAWCOBALT.get());
+                output.accept(Moditems.RAWGOLD.get());
+                output.accept(Moditems.RAWIRON.get());
+                output.accept(Moditems.RAWNICKEL.get());
+                output.accept(Moditems.RAWCOPPER.get());
+                output.accept(Moditems.RAWZINC.get());
+                output.accept(Moditems.RAWTIN.get());
+                output.accept(Moditems.RAWPLATINUM.get());
+                output.accept(Moditems.RAWSILVER.get());
 
                 
                 //BLOCKS ->
@@ -42,6 +55,18 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
                 output.accept(ModBlocks.ALABASTER.get());
                 output.accept(ModBlocks.LIMESTONE.get());
                 output.accept(ModBlocks.GRANITE.get());
+                output.accept(ModBlocks.IRONORE.get());
+                output.accept(ModBlocks.TINORE.get());
+                output.accept(ModBlocks.COBALTORE.get());
+                output.accept(ModBlocks.ALUMINUMORE.get());
+                output.accept(ModBlocks.CHROMIUMORE.get());
+                output.accept(ModBlocks.NICKELORE.get());
+                output.accept(ModBlocks.PLATINUMORE.get());
+                output.accept(ModBlocks.SILVERORE.get());
+                output.accept(ModBlocks.ZINCORE.get());
+                output.accept(ModBlocks.GOLDORE.get());
+                output.accept(ModBlocks.COPPERORE.get());
+                output.accept(ModBlocks.COBALTORE.get());
 
             }).build());
 

@@ -10,6 +10,17 @@
   "item.rma.zincingot": "Zinc Ingot",
   "item.rma.goldingot": "Gold Ingot",
   "item.rma.marbleveneer": "Marble Upgrade",
+  "item.rma.rawiron": "Raw Iron",
+  "item.rma.rawcopper": "Raw Copper",
+  "item.rma.rawgold": "Raw Gold",
+  "item.rma.rawcobalt": "Raw Cobalt",
+  "item.rma.rawtin": "Raw Tin",
+  "item.rma.rawaluminum": "Raw Aluminum",
+  "item.rma.rawchromium": "Raw Chromium",
+  "item.rma.rawsilver": "Raw Silver",
+  "item.rma.rawzinc": "Raw Zinc",
+  "item.rma.rawplatinum": "Raw Platinum",
+  "item.rma.rawnickel": "Raw Nickel",
   "block.rma.marble": "Un-Cut Marble",
   "block.rma.basalt": "Un-Cut Basalt",
   "block.rma.limestone": "Un-Cut Limestone",
@@ -18,6 +29,7 @@
   "block.rma.rock": "Stone",
   "item.rma.superalloyingot": "Super Alloy Ingot",
   "item.rma.silveringot": "Silver Ingot",
+  "item.rma.platinumingot": "Platinum Ingot",
   "block.rma.ironore": "Iron Ore",
   "block.rma.copperore": "Copper Ore",
   "block.rma.goldore": "Gold Ore",
@@ -27,5 +39,6 @@
   "block.rma.platinumore": "Platinum Ore",
   "block.rma.silverore": "Silver Ore",
   "block.rma.tinore": "Tin Ore",
-  "block.rma.zincore": "Zinc Ore"
+  "block.rma.zincore": "Zinc Ore",
+  "block.rma.chromiumore": "Chromium Ore"
 }

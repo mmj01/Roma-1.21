@@ -41,6 +41,29 @@ public class Moditems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PLATINUMINGOT = ITEMS.register("platinumingot",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAWPLATINUM = ITEMS.register("rawplatinum",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAWIRON = ITEMS.register("rawiron",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAWCOPPER = ITEMS.register("rawcopper",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAWZINC = ITEMS.register("rawzinc",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAWGOLD = ITEMS.register("rawgold",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAWNICKEL = ITEMS.register("rawnickel",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAWSILVER = ITEMS.register("rawsilver",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAWTIN = ITEMS.register("rawtin",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAWCHROMIUM = ITEMS.register("rawchromium",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAWCOBALT = ITEMS.register("rawcobalt",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAWALUMINUM = ITEMS.register("rawaluminum",
+            () -> new Item(new Item.Properties()));
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
