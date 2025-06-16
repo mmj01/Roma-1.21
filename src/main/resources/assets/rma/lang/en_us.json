@@ -40,5 +40,7 @@
   "block.rma.silverore": "Silver Ore",
   "block.rma.tinore": "Tin Ore",
   "block.rma.zincore": "Zinc Ore",
-  "block.rma.chromiumore": "Chromium Ore"
+  "block.rma.chromiumore": "Chromium Ore",
+  "block.rma.supermarble" : "3/3 Marble",
+  "item.rma.chisel": "Chisel"
 }

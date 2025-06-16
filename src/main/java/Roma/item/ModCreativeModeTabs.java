@@ -44,6 +44,7 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
                 output.accept(Moditems.RAWTIN.get());
                 output.accept(Moditems.RAWPLATINUM.get());
                 output.accept(Moditems.RAWSILVER.get());
+                output.accept(Moditems.CHISEL.get());
 
                 
                 //BLOCKS ->
@@ -67,6 +68,7 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
                 output.accept(ModBlocks.GOLDORE.get());
                 output.accept(ModBlocks.COPPERORE.get());
                 output.accept(ModBlocks.COBALTORE.get());
+                output.accept(ModBlocks.SUPERMARBLE.get());
 
             }).build());
 

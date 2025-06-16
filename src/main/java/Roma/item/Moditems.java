@@ -1,5 +1,6 @@
 package Roma.item;
 
+import Roma.item.custom.chisel;
 import Roma.roma;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -63,7 +64,8 @@ public class Moditems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAWALUMINUM = ITEMS.register("rawaluminum",
             () -> new Item(new Item.Properties()));
-
+    public static final RegistryObject<Item> CHISEL = ITEMS.register("chisel",
+            () -> new chisel(new Item.Properties().durability(400)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

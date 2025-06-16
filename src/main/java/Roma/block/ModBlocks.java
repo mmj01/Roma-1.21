@@ -71,6 +71,24 @@ public class ModBlocks {
     public static final RegistryObject<Block> NICKELORE = registerBlock("nickelore",
             ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
                     .strength(75f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SUPERMARBLE = registerBlock("supermarble",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(75f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SUPERMARBLETYONE = registerBlock("supermarbletyone",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(75f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SUPERMARBLETYTWO = registerBlock("supermarbletytwo",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(75f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SUPERMARBLETYTHREE = registerBlock("supermarbletythree",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(75f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SUPERMARBLETYFOUR = registerBlock("supermarbletyfour",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(75f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SUPERMARBLETYFIVE = registerBlock("supermarbletyfive",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(75f).explosionResistance(5f).requiresCorrectToolForDrops()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
