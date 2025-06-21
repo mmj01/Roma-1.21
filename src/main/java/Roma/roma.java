@@ -3,9 +3,10 @@ package Roma;
 import Roma.block.ModBlocks;
 import Roma.item.ModCreativeModeTabs;
 import Roma.item.Moditems;
+
+import Roma.item.custom.CustomAttribute;
 import com.mojang.logging.LogUtils;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -18,12 +19,14 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(roma.MOD_ID)
 public class roma
 {
+
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "rma";
     // Directly reference a slf4j logger
@@ -56,7 +59,7 @@ public class roma
         ModCreativeModeTabs.register(modEventBus);
         Moditems.register(modEventBus);
         ModBlocks.register(modEventBus);
-
+        CustomAttribute.register(modEventBus);
         //NEW REGISTERS
 
 
@@ -74,6 +77,7 @@ public class roma
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
+
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {

@@ -42,5 +42,9 @@
   "block.rma.zincore": "Zinc Ore",
   "block.rma.chromiumore": "Chromium Ore",
   "block.rma.supermarble" : "3/3 Marble",
-  "item.rma.chisel": "Chisel"
+  "item.rma.chisel": "Chisel",
+  "item.rma.coal": "Coal",
+  "block.rma.coalore": "Coal Ore",
+  "item.rma.wheat": "Wheat",
+  "item.rma.wheatseeds": "Wheatseeds"
 }

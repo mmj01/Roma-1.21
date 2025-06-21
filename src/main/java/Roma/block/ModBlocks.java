@@ -89,6 +89,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> SUPERMARBLETYFIVE = registerBlock("supermarbletyfive",
             ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
                     .strength(75f).explosionResistance(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> COALORE = registerBlock("coalore",
+            ()-> new DropExperienceBlock(UniformInt.of(3,4), BlockBehaviour.Properties.of()
+                    .strength(20f).explosionResistance(5f).requiresCorrectToolForDrops()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

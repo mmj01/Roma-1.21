@@ -1,8 +1,11 @@
 package Roma.item;
 
+import Roma.item.custom.FuelItem;
+import Roma.item.custom.ReachItem;
 import Roma.item.custom.chisel;
 import Roma.roma;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SwordItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -66,6 +69,33 @@ public class Moditems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CHISEL = ITEMS.register("chisel",
             () -> new chisel(new Item.Properties().durability(400)));
+    public static final RegistryObject<Item> COAL = ITEMS.register("coal",
+            () -> new FuelItem(new Item.Properties(), 1200));
+    public static final RegistryObject<Item> WHEATSEEDS = ITEMS.register("wheatseeds",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> WHEAT = ITEMS.register("wheat",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.WHEAT)));
+
+
+
+
+
+    public static final RegistryObject<Item> IRON_GREATSWORD = ITEMS.register("irongreatsword",
+            () -> new ReachItem(
+                    ModToolTiers.IRON,
+                    3, // reach
+                    1.5f, // knockback
+                    7,    // damage
+                    -2,   // attack speed
+                    new Item.Properties()
+            )
+    );
+
+
+
+
+
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
