@@ -4,8 +4,7 @@ import Roma.item.custom.FuelItem;
 import Roma.item.custom.ReachItem;
 import Roma.item.custom.chisel;
 import Roma.roma;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -26,6 +25,8 @@ public class Moditems {
     public static final RegistryObject<Item> COPPERNGOT = ITEMS.register("copperingot",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZEINGOT = ITEMS.register("bronzeingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRASSINGOT = ITEMS.register("brassingot",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> STEELINGOT = ITEMS.register("steelingot",
             () -> new Item(new Item.Properties()));
@@ -77,19 +78,109 @@ public class Moditems {
             () -> new Item(new Item.Properties().food(ModFoodProperties.WHEAT)));
 
 
+    public static final RegistryObject<Item> IRONAXE = ITEMS.register("ironaxe",
+            () -> new AxeItem(ModToolTiers.IRON,new Item.Properties()));
+    public static final RegistryObject<Item> STONEAXE = ITEMS.register("stoneaxe",
+            () -> new AxeItem(ModToolTiers.STONE,new Item.Properties()));
+    public static final RegistryObject<Item> WOODAXE = ITEMS.register("woodaxe",
+            () -> new AxeItem(ModToolTiers.WOOD,new Item.Properties()));
+    public static final RegistryObject<Item> BRASSAXE = ITEMS.register("brassaxe",
+            () -> new AxeItem(ModToolTiers.BRASS,new Item.Properties()));
+    public static final RegistryObject<Item> HSTEELAXE = ITEMS.register("hsteelaxe",
+            () -> new AxeItem(ModToolTiers.HSTEEL,new Item.Properties()));
+    public static final RegistryObject<Item> SUPERALLOYAXE = ITEMS.register("superalloyaxe",
+            () -> new AxeItem(ModToolTiers.SUPERALLOY,new Item.Properties()));
+
+    public static final RegistryObject<Item> IRONSHOVEL = ITEMS.register("ironshovel",
+            () -> new ShovelItem(ModToolTiers.IRON,new Item.Properties()));
+    public static final RegistryObject<Item> STONESHOVEL = ITEMS.register("stoneshovel",
+            () -> new ShovelItem(ModToolTiers.STONE,new Item.Properties()));
+    public static final RegistryObject<Item> WOODSHOVEL = ITEMS.register("woodshovel",
+            () -> new ShovelItem(ModToolTiers.WOOD,new Item.Properties()));
+    public static final RegistryObject<Item> BRASSSHOVEL = ITEMS.register("brassshovel",
+            () -> new ShovelItem(ModToolTiers.BRASS,new Item.Properties()));
+    public static final RegistryObject<Item> HSTEELSHOVEL = ITEMS.register("hsteelshovel",
+            () -> new ShovelItem(ModToolTiers.HSTEEL,new Item.Properties()));
+    public static final RegistryObject<Item> SUPERALLOYSHOVEL = ITEMS.register("superalloyshovel",
+            () -> new ShovelItem(ModToolTiers.SUPERALLOY,new Item.Properties()));
+
+    public static final RegistryObject<Item> IRONPICKAXE = ITEMS.register("ironpickaxe",
+            () -> new PickaxeItem(ModToolTiers.IRON,new Item.Properties()));
+    public static final RegistryObject<Item> COPPERPICKAXE = ITEMS.register("copperpickaxe",
+            () -> new PickaxeItem(ModToolTiers.COPPER,new Item.Properties()));
+    public static final RegistryObject<Item> STONEPICKAXE = ITEMS.register("stonepickaxe",
+            () -> new PickaxeItem(ModToolTiers.STONE,new Item.Properties()));
+    public static final RegistryObject<Item> WOODPICKAXE = ITEMS.register("woodpickaxe",
+            () -> new PickaxeItem(ModToolTiers.WOOD,new Item.Properties()));
+    public static final RegistryObject<Item> BRASSPICKAXE = ITEMS.register("brasspickaxe",
+            () -> new PickaxeItem(ModToolTiers.BRASS,new Item.Properties()));
+    public static final RegistryObject<Item> BRONZEPICKAXE = ITEMS.register("bronzepickaxe",
+            () -> new PickaxeItem(ModToolTiers.BRONZE,new Item.Properties()));
+    public static final RegistryObject<Item> HSTEELPICKAXE = ITEMS.register("hsteelpickaxe",
+            () -> new PickaxeItem(ModToolTiers.HSTEEL,new Item.Properties()));
+    public static final RegistryObject<Item> LSTEELPICKAXE = ITEMS.register("lsteelpickaxe",
+            () -> new PickaxeItem(ModToolTiers.LSTEEL,new Item.Properties()));
+    public static final RegistryObject<Item> SUPERALLOYPICKAXE = ITEMS.register("superalloypickaxe",
+            () -> new PickaxeItem(ModToolTiers.SUPERALLOY,new Item.Properties()));
 
 
 
-    public static final RegistryObject<Item> IRON_GREATSWORD = ITEMS.register("irongreatsword",
-            () -> new ReachItem(
-                    ModToolTiers.IRON,
-                    3, // reach
-                    1.5f, // knockback
-                    7,    // damage
-                    -2,   // attack speed
-                    new Item.Properties()
-            )
-    );
+
+
+    public static final RegistryObject<Item> IRONGREATSWORD = ITEMS.register("irongreatsword",
+            () -> new ReachItem(ModToolTiers.IRON,4,-3,5.5,2.2,new Item.Properties()));
+
+    public static final RegistryObject<Item> COPPERGREATSWORD = ITEMS.register("coppergreatsword",
+            () -> new ReachItem(ModToolTiers.COPPER, 3,-3, 5.5, 2.2, new Item.Properties()));
+
+    public static final RegistryObject<Item> STONEGREATSWORD = ITEMS.register("stonegreatsword",
+            () -> new ReachItem(ModToolTiers.STONE,2,-3,5.5,2.4,new Item.Properties()));
+
+    public static final RegistryObject<Item> WOODGREATSWORD = ITEMS.register("woodgreatsword",
+            () -> new ReachItem(ModToolTiers.WOOD, 1,-2, 5.5, 2.0, new Item.Properties()));
+
+    public static final RegistryObject<Item> BRONZEGREATSWORD = ITEMS.register("bronzegreatsword",
+            () -> new ReachItem(ModToolTiers.BRONZE,6,-3,5.5,2.4,new Item.Properties()));
+
+    public static final RegistryObject<Item> BRASSGREATSWORD = ITEMS.register("brassgreatsword",
+            () -> new ReachItem(ModToolTiers.BRASS, 5,-3, 5.5, 2.4, new Item.Properties()));
+
+    public static final RegistryObject<Item> LSTEELEGREATSWORD = ITEMS.register("lsteelgreatsword",
+            () -> new ReachItem(ModToolTiers.LSTEEL,7,-3,5.5,2.6,new Item.Properties()));
+
+    public static final RegistryObject<Item> HSTEELGREATSWORD = ITEMS.register("hsteelgreatsword",
+            () -> new ReachItem(ModToolTiers.HSTEEL, 8,-3, 5.5, 2.6, new Item.Properties()));
+
+    public static final RegistryObject<Item> SUPERALLOYGREATSWORD = ITEMS.register("superalloygreatsword",
+            () -> new ReachItem(ModToolTiers.SUPERALLOY, 10,-3, 6, 3, new Item.Properties()));
+
+
+    public static final RegistryObject<Item> IRONBATTLEAXE = ITEMS.register("ironbattleaxe",
+            () -> new ReachItem(ModToolTiers.IRON,0,-2,4.5,2.2,new Item.Properties()));
+
+    public static final RegistryObject<Item> COPPERBATTLEAXE = ITEMS.register("copperbattleaxe",
+            () -> new ReachItem(ModToolTiers.COPPER, 0,-2, 4.5, 2.2, new Item.Properties()));
+
+    public static final RegistryObject<Item> STONEBATTLEAXE = ITEMS.register("stonebattleaxe",
+            () -> new ReachItem(ModToolTiers.STONE,0,-2,4.5,2.4,new Item.Properties()));
+
+    public static final RegistryObject<Item> WOODBATTLEAXE = ITEMS.register("woodbattleaxe",
+            () -> new ReachItem(ModToolTiers.WOOD, 0,-1, 4.5, 2.0, new Item.Properties()));
+
+    public static final RegistryObject<Item> BRONZEBATTLEAXE = ITEMS.register("bronzebattleaxe",
+            () -> new ReachItem(ModToolTiers.BRONZE,2,-2,4.5,2.4,new Item.Properties()));
+
+    public static final RegistryObject<Item> BRASSBATTLEAXE = ITEMS.register("brassbattleaxe",
+            () -> new ReachItem(ModToolTiers.BRASS, 1,-2, 4.5, 2.4, new Item.Properties()));
+
+    public static final RegistryObject<Item> LSTEELEBATTLEAXE = ITEMS.register("lsteelbattleaxe",
+            () -> new ReachItem(ModToolTiers.LSTEEL,3,-2,4.5,2.6,new Item.Properties()));
+
+    public static final RegistryObject<Item> HSTEELBATTLEAXE = ITEMS.register("hsteelbattleaxe",
+            () -> new ReachItem(ModToolTiers.HSTEEL, 4,-2, 4.5, 2.6, new Item.Properties()));
+
+    public static final RegistryObject<Item> SUPERALLOYBATTLEAXE = ITEMS.register("superalloybattleaxe",
+            () -> new ReachItem(ModToolTiers.SUPERALLOY, 6,-2, 5, 3, new Item.Properties()));
 
 
 

@@ -24,6 +24,7 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
                 output.accept(Moditems.CHROMIUMINGOT.get());
                 output.accept(Moditems.COPPERNGOT.get());
                 output.accept(Moditems.BRONZEINGOT.get());
+                output.accept(Moditems.BRASSINGOT.get());
                 output.accept(Moditems.STEELINGOT.get());
                 output.accept(Moditems.TININGOT.get());
                 output.accept(Moditems.ZINCINGOT.get());
@@ -49,6 +50,57 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
                 output.accept(Moditems.WHEAT.get());
                 output.accept(Moditems.WHEATSEEDS.get());
 
+                output.accept(Moditems.IRONSHOVEL.get());
+                output.accept(Moditems.IRONBATTLEAXE.get());
+                output.accept(Moditems.IRONAXE.get());
+                output.accept(Moditems.IRONGREATSWORD.get());
+                output.accept(Moditems.IRONPICKAXE.get());
+
+                output.accept(Moditems.STONEAXE.get());
+                output.accept(Moditems.STONEBATTLEAXE.get());
+                output.accept(Moditems.STONEPICKAXE.get());
+                output.accept(Moditems.STONEGREATSWORD.get());
+                output.accept(Moditems.STONESHOVEL.get());
+
+                output.accept(Moditems.WOODAXE.get());
+                output.accept(Moditems.WOODBATTLEAXE.get());
+                output.accept(Moditems.WOODGREATSWORD.get());
+                output.accept(Moditems.WOODPICKAXE.get());
+                output.accept(Moditems.WOODSHOVEL.get());
+
+                output.accept(Moditems.COPPERBATTLEAXE.get());
+                output.accept(Moditems.COPPERGREATSWORD.get());
+                output.accept(Moditems.COPPERPICKAXE.get());
+
+                output.accept(Moditems.BRASSAXE.get());
+                output.accept(Moditems.BRASSBATTLEAXE.get());
+                output.accept(Moditems.BRASSGREATSWORD.get());
+                output.accept(Moditems.BRASSPICKAXE.get());
+                output.accept(Moditems.BRASSSHOVEL.get());
+
+                output.accept(Moditems.BRONZEBATTLEAXE.get());
+                output.accept(Moditems.BRONZEGREATSWORD.get());
+                output.accept(Moditems.BRONZEPICKAXE.get());
+
+                output.accept(Moditems.LSTEELEBATTLEAXE.get());
+                output.accept(Moditems.LSTEELEGREATSWORD.get());
+                output.accept(Moditems.LSTEELPICKAXE.get());
+
+                output.accept(Moditems.HSTEELAXE.get());
+                output.accept(Moditems.HSTEELBATTLEAXE.get());
+                output.accept(Moditems.HSTEELGREATSWORD.get());
+                output.accept(Moditems.HSTEELPICKAXE.get());
+                output.accept(Moditems.HSTEELSHOVEL.get());
+
+                output.accept(Moditems.SUPERALLOYAXE.get());
+                output.accept(Moditems.SUPERALLOYBATTLEAXE.get());
+                output.accept(Moditems.SUPERALLOYGREATSWORD.get());
+                output.accept(Moditems.SUPERALLOYPICKAXE.get());
+                output.accept(Moditems.SUPERALLOYSHOVEL.get());
+
+
+
+
                 
                 //BLOCKS ->
                 
@@ -73,6 +125,8 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
                 output.accept(ModBlocks.COBALTORE.get());
                 output.accept(ModBlocks.SUPERMARBLE.get());
                 output.accept(ModBlocks.COALORE.get());
+
+
 
             }).build());
 

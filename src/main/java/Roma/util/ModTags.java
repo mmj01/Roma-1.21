@@ -10,22 +10,21 @@ public class ModTags {
 
     public static final TagKey<Block> WOOD = createTag("wood") ;
     public static final TagKey<Block> STONE = createTag("stone") ;
+    public static final TagKey<Block> HOLDER = createTag("holder") ;
 
 
-    public static final TagKey<Block> HardnessA = createTag("hardnessa") ;
-    public static final TagKey<Block> NHardnessA = createTag("nhardnessa");
-    public static final TagKey<Block> HARDNESSB = createTag("hardnessb");
-    public static final TagKey<Block> HARDNESSC = createTag("hardnessc");
-    public static final TagKey<Block> HARDNESSD = createTag("hardnessd");
-    public static final TagKey<Block> HARDNESSE = createTag("hardnesse");
-    public static final TagKey<Block> HARDNESSF = createTag("hardnessf");
-    public static final TagKey<Block> HARDNESSG = createTag("hardnessg");
-    public static final TagKey<Block> NHARDNESSB = createTag("nhardnessb");
-    public static final TagKey<Block> NHARDNESSC = createTag("nhardnessc");
-    public static final TagKey<Block> NHARDNESSD = createTag("nhardnessd");
-    public static final TagKey<Block> NHARDNESSE = createTag("nhardnesse");
-    public static final TagKey<Block> NHARDNESSF = createTag("nhardnessf");
-    public static final TagKey<Block> NHARDNESSG = createTag("nhardnessg");
+    public static final TagKey<Block> NEEDS_WOOD_TOOL = createTag("needswoodtool");
+    public static final TagKey<Block> NEEDS_STONE_TOOL = createTag("needsstonetool");
+    public static final TagKey<Block> NEEDS_IRON_TOOL = createTag("needsirontool");
+    public static final TagKey<Block> NEEDS_BRASS_TOOL = createTag("needsbrasstool");
+    public static final TagKey<Block> NEEDS_BRONZE_TOOL = createTag("needsbronzetool");
+    public static final TagKey<Block> NEEDS_LSTEEL_TOOL = createTag("needslsteeltool");
+    public static final TagKey<Block> NEEDS_HSTEEL_TOOL = createTag("needshsteeltool");
+    public static final TagKey<Block> NEEDS_SUPERALLOY_TOOL = createTag("needssuperalloytool");
+    public static final TagKey<Block> NEEDS_COPPER_TOOL = createTag("needscoppertool");
+
+
+
 
 
 

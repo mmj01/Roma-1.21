@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "rma:rock",
+    "rma:limestone",
+    "rma:tinore",
+    "rma:copperore",
+    "rma:zincore"
+  ]
+}

@@ -3,11 +3,8 @@ package Roma.item.custom;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import cpw.mods.util.Lazy;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -18,13 +15,15 @@ import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
-import org.checkerframework.checker.units.qual.C;
-import org.joml.Vector3d;
-import java.util.UUID;
+
+
+import java.util.List;
 
 public class ReachItem extends SwordItem {
 
@@ -35,12 +34,12 @@ public class ReachItem extends SwordItem {
     public static final ResourceLocation KNOCKBACK_MOD = ResourceLocation.fromNamespaceAndPath("roma", "knockback_mod"); //Another randomly generated version 4 UUID
 
 
-    public static double reach = 0;
-    public static double knockBack= 0;
-    public static final int damage=0;
-    public static final int attackSpd=0;
+    public double reach;
+    public double knockBack;
+    public final int damage;
+    public final int attackSpd;
 
-    public static Lazy<? extends Multimap<Attribute, AttributeModifier>> ATTRIBUTE_LAZY_MAP = Lazy.of(() -> {
+    public Lazy<? extends Multimap<Attribute, AttributeModifier>> ATTRIBUTE_LAZY_MAP = Lazy.of(() -> {
         Multimap<Attribute, AttributeModifier> map;
 
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
@@ -53,83 +52,69 @@ public class ReachItem extends SwordItem {
         return map;
     });
 
-    public ReachItem(Tier pTier, int dmg, float atkspd, double reach, double kb, Properties pProperties) {
-        super(pTier, pProperties);
-        ReachItem.reach =reach;
-        knockBack=kb;
+    public ReachItem(Tier tier, int damage, int attackSpd, double reach, double knockBack, Properties properties) {
+        super(tier, properties);
+        this.reach = reach;
+        this.knockBack = knockBack;
+        this.damage = (int) ((float)damage + tier.getAttackDamageBonus());
+        this.attackSpd = attackSpd;
     }
 
 
     @Override
     public ItemAttributeModifiers getDefaultAttributeModifiers(ItemStack stack) {
-        Multimap<Attribute, AttributeModifier> map = ATTRIBUTE_LAZY_MAP.get();
-
         ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();
-        for (Attribute attribute : map.keySet()) {
-            // Get the ResourceKey for this Attribute
-            ResourceKey<Attribute> key = BuiltInRegistries.ATTRIBUTE.getResourceKey(attribute)
-                    .orElseThrow(() -> new IllegalStateException("Attribute not registered: " + attribute));
 
-            // Get the Holder<Attribute> from the registry using the ResourceKey
-            Holder<Attribute> holder = BuiltInRegistries.ATTRIBUTE.getHolderOrThrow(key);
+        // Apply base attack damage and speed if you want
+        builder.add(Attributes.ATTACK_DAMAGE, new AttributeModifier(ATTACK_DAMAGE_UUID, damage, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+        builder.add(Attributes.ATTACK_SPEED, new AttributeModifier(ATTACK_SPEED_UUID, attackSpd, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
 
-            for (AttributeModifier modifier : map.get(attribute)) {
-                builder.add(holder, modifier, EquipmentSlotGroup.MAINHAND);
-            }
-        }
+        // ✅ Apply your custom reach value to ENTITY_INTERACTION_RANGE
+        builder.add(Attributes.ENTITY_INTERACTION_RANGE, new AttributeModifier(REACH_MOD, reach, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+
+        // Optionally, apply knockback
+        builder.add(Attributes.ATTACK_KNOCKBACK, new AttributeModifier(KNOCKBACK_MOD, knockBack, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+
         return builder.build();
     }
 
 
 
 
+
+
     @Override
     public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
-        // Only run on server side
-        if (entity.level().isClientSide) return super.onEntitySwing(stack, entity);
+        if (entity.level().isClientSide) return super.onEntitySwing(stack, entity); // Server-side only
 
-        // Get the custom reach attribute Holder
-        Attribute rawReachAttr = CustomAttribute.ATTACK_REACH.get();
-
-        ResourceKey<Attribute> key = BuiltInRegistries.ATTRIBUTE.getResourceKey(rawReachAttr)
-                .orElseThrow(() -> new IllegalStateException("Reach attribute not registered"));
-
-        Holder<Attribute> reachHolder = BuiltInRegistries.ATTRIBUTE.getHolderOrThrow(key);
-
-        // Get reach value from entity's attribute
-        double reach = entity.getAttributeValue(reachHolder);
+        // Use Minecraft's built-in ENTITY_INTERACTION_RANGE attribute
+        double reach = entity.getAttributeValue(Attributes.ENTITY_INTERACTION_RANGE);
         double reachSqr = reach * reach;
 
-        // Get eye position and look vector of attacker
-        Vec3 eyePos = entity.getEyePosition();
+        Vec3 eyePos = entity.getEyePosition(); // 1.21
         Vec3 lookVec = entity.getLookAngle();
         Vec3 targetVec = eyePos.add(lookVec.scale(reach));
 
-        // Expand bounding box for searching entities in reach
         AABB searchBox = entity.getBoundingBox().expandTowards(lookVec.scale(reach)).inflate(1.0D);
 
-        // Ray trace to find target entity in reach
         EntityHitResult result = ProjectileUtil.getEntityHitResult(
                 entity.level(), entity, eyePos, targetVec, searchBox,
                 e -> e instanceof LivingEntity && !e.isSpectator() && e.isPickable()
         );
 
-        // If hit entity is valid and within reach distance, apply damage
         if (result != null && result.getEntity() instanceof LivingEntity target) {
             double distSqr = entity.distanceToSqr(target);
             if (distSqr <= reachSqr) {
-                float damageAmount = (float) entity.getAttributeValue(Attributes.ATTACK_DAMAGE);
                 if (entity instanceof Player player) {
-                    target.hurt(entity.damageSources().playerAttack(player), damageAmount);
+                    target.hurt(entity.damageSources().playerAttack(player),
+                            (float) entity.getAttributeValue(Attributes.ATTACK_DAMAGE));
                 } else {
-                    target.hurt(entity.damageSources().mobAttack(entity), damageAmount);
+                    target.hurt(entity.damageSources().mobAttack(entity),
+                            (float) entity.getAttributeValue(Attributes.ATTACK_DAMAGE));
                 }
-                // You can add particles/sounds here if you want
-                return true; // Indicate we handled the swing with a hit
             }
         }
 
-        // Default behavior if no hit or out of range
         return super.onEntitySwing(stack, entity);
     }
 
