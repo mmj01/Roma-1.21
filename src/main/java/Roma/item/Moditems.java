@@ -22,13 +22,15 @@ public class Moditems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CHROMIUMINGOT = ITEMS.register("chromiumingot",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> COPPERNGOT = ITEMS.register("copperingot",
+    public static final RegistryObject<Item> COPPERINGOT = ITEMS.register("copperingot",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZEINGOT = ITEMS.register("bronzeingot",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRASSINGOT = ITEMS.register("brassingot",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> STEELINGOT = ITEMS.register("steelingot",
+    public static final RegistryObject<Item> HSTEELINGOT = ITEMS.register("hsteelingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LSTEELINGOT = ITEMS.register("lsteelingot",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TININGOT = ITEMS.register("tiningot",
             () -> new Item(new Item.Properties()));

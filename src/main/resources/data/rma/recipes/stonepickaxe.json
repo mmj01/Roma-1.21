@@ -1,13 +1,25 @@
 {
   "type": "rma:fourcrafter",
   "ingredients": [
-    {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"},
-    {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"},
-    {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"},
-    {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"}
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" }
   ],
   "result": {
-    "item": "rma:stonepickaxe",
+    "item": "minecraft:diamond_sword",
     "count": 1
   }
 }

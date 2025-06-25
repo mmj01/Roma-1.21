@@ -1,6 +1,5 @@
 package Roma.block.entity.custom;
 
-
 import Roma.block.custom.recipe.FourCraftingRecipe;
 import Roma.block.custom.recipe.FourCraftingrecipeinput;
 import Roma.block.custom.recipe.ModRecipes;
@@ -19,22 +18,23 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.RegistryAccess;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider {
-    public final ItemStackHandler itemHandler = new ItemStackHandler(17) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(17) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -44,47 +44,26 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
         }
 
         @Override
-        public boolean isItemValid(int slot, @org.jetbrains.annotations.NotNull ItemStack stack) {
-            // Prevent inserting into output slot (slot 0)
+        public boolean isItemValid(int slot, ItemStack stack) {
             return slot != 0;
         }
     };
-
-    private static final int INPUT_SLOT = 1;
-    private static final int OUTPUT_SLOT = 0;
-    private static final int INPUT_SLOT2 = 2;
-    private static final int INPUT_SLOT3 = 3;
-    private static final int INPUT_SLOT4 = 4;
-    private static final int INPUT_SLOT5 = 5;
-    private static final int INPUT_SLOT6 = 6;
-    private static final int INPUT_SLOT7 = 7;
-    private static final int INPUT_SLOT8 = 8;
-    private static final int INPUT_SLOT9 = 9;
-    private static final int INPUT_SLOT10 = 10;
-    private static final int INPUT_SLOT11 = 11;
-    private static final int INPUT_SLOT12 = 12;
-    private static final int INPUT_SLOT13 = 13;
-    private static final int INPUT_SLOT14 = 14;
-    private static final int INPUT_SLOT15 = 15;
-    private static final int INPUT_SLOT16 = 16;
+    public ItemStackHandler getItemHandler() {
+        return this.itemHandler;
+    }
 
 
+    private final LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.of(() -> itemHandler);
 
-    private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
-
-
-
-
-    public FourCraftingBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.fourcraftingbe.get(), pPos, pBlockState);
-
-
+    public FourCraftingBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.fourcraftingbe.get(), pos, state);
     }
 
     @Override
     public void onLoad() {
         super.onLoad();
-        lazyItemHandler = LazyOptional.of(() -> itemHandler);
+        lazyItemHandler.invalidate();
+        lazyItemHandler.cast();
     }
 
     @Override
@@ -98,118 +77,100 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
         for (int i = 0; i < itemHandler.getSlots(); i++) {
             inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
-
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        pTag.put("inventory", itemHandler.serializeNBT(pRegistries));
-
-
-        super.saveAdditional(pTag, pRegistries);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        tag.put("inventory", itemHandler.serializeNBT(registries));
+        super.saveAdditional(tag, registries);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        super.loadAdditional(pTag, pRegistries);
-
-        itemHandler.deserializeNBT(pRegistries, pTag.getCompound("inventory"));
-
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
+        itemHandler.deserializeNBT(registries, tag.getCompound("inventory"));
     }
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("block.rma.FourCrafting");
+        return Component.translatable("block.roma.four_crafting");
     }
 
     @Nullable
     @Override
-    public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        return new FourCraftingmenu(pContainerId, pPlayerInventory,this);
+    public AbstractContainerMenu createMenu(int containerId, Inventory playerInventory, Player player) {
+        return new FourCraftingmenu(containerId, playerInventory, this);
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, FourCraftingBlockEntity entity) {
-        System.out.println("📋 All registered fourcrafter recipes:");
-        level.getRecipeManager().getAllRecipesFor(ModRecipes.FOURCRAFTING_TYPE.get()).forEach(r -> {
-            System.out.println(" - " + r.id());
-        });
-        if (level.isClientSide) return;
+        System.out.println("🧾 Listing all loaded fourcrafter recipes...");
+        level.getRecipeManager()
+                .getAllRecipesFor(ModRecipes.FOURCRAFTING_TYPE.get())
+                .forEach(r -> System.out.println(" - Found: " + r.id()));
 
+        if (level.getRecipeManager().getAllRecipesFor(ModRecipes.FOURCRAFTING_TYPE.get()).isEmpty()) {
+            System.out.println("❌ No recipes found for fourcrafter type.");
+        } else {
+            System.out.println("✅ Found " + level.getRecipeManager().getAllRecipesFor(ModRecipes.FOURCRAFTING_TYPE.get()).size() + " recipes.");
+        }
+        if (level.isClientSide()) return;
         if (entity.hasRecipe()) {
             entity.craftItem();
         }
     }
 
-
-
     private void craftItem() {
         Optional<RecipeHolder<FourCraftingRecipe>> recipe = getCurrentRecipe();
-        ItemStack output = recipe.get().value().output();
+        if (recipe.isEmpty()) return;
 
+        ItemStack output = recipe.get().value().getResultItem(level.registryAccess());
         for (int i = 1; i <= 16; i++) {
             itemHandler.extractItem(i, 1, false);
         }
-        itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
-                itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
+        itemHandler.setStackInSlot(0, new ItemStack(output.getItem(),
+                itemHandler.getStackInSlot(0).getCount() + output.getCount()));
     }
 
-
-
     private boolean hasRecipe() {
-        System.out.println("🧱 Current input stacks:");
-        for (int i = 1; i <= 16; i++) {
-            System.out.println("Slot " + i + ": " + itemHandler.getStackInSlot(i));
-        }
-        Optional<RecipeHolder<FourCraftingRecipe>> recipe = getCurrentRecipe();
-        if(recipe.isEmpty()) {
-            return false;
-        }
 
-        ItemStack output = recipe.get().value().output();
+        Optional<RecipeHolder<FourCraftingRecipe>> recipe = getCurrentRecipe();
+        if (recipe.isEmpty()) return false;
+
+        ItemStack output = recipe.get().value().getResultItem(level.registryAccess());
         return canInsertItemIntoOutputSlot(output) && canInsertAmountIntoOutputSlot(output.getCount());
     }
 
     private Optional<RecipeHolder<FourCraftingRecipe>> getCurrentRecipe() {
-        List<ItemStack> inputStacks = List.of(
-                itemHandler.getStackInSlot(1), itemHandler.getStackInSlot(2),
-                itemHandler.getStackInSlot(3), itemHandler.getStackInSlot(4),
-                itemHandler.getStackInSlot(5), itemHandler.getStackInSlot(6),
-                itemHandler.getStackInSlot(7), itemHandler.getStackInSlot(8),
-                itemHandler.getStackInSlot(9), itemHandler.getStackInSlot(10),
-                itemHandler.getStackInSlot(11), itemHandler.getStackInSlot(12),
-                itemHandler.getStackInSlot(13), itemHandler.getStackInSlot(14),
-                itemHandler.getStackInSlot(15), itemHandler.getStackInSlot(16)
-        );
 
-        FourCraftingrecipeinput input = new FourCraftingrecipeinput(inputStacks);
-
-        Optional<RecipeHolder<FourCraftingRecipe>> recipe = this.level.getRecipeManager()
-                .getRecipeFor(ModRecipes.FOURCRAFTING_TYPE.get(), input, level);
-
-        if (recipe.isPresent()) {
-            System.out.println("✅ FourCrafting recipe matched: " + recipe.get().id());
-        } else {
-            System.out.println("❌ No matching FourCrafting recipe.");
+        List<ItemStack> inputs = new ArrayList<>();
+        for (int i = 1; i <= 16; i++) {
+            inputs.add(itemHandler.getStackInSlot(i));
         }
+        FourCraftingrecipeinput input = FourCraftingrecipeinput.of(inputs);
+        System.out.println("🔎 Checking for fourcrafter recipe...");
 
-        return recipe;
+        Optional<RecipeHolder<FourCraftingRecipe>> result =
+                level.getRecipeManager().getRecipeFor(ModRecipes.FOURCRAFTING_TYPE.get(), input, level);
+
+        System.out.println("📄 Match result: " + (result.isPresent() ? result.get().id() : "no match"));
+
+        return result;
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
-        return itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || this.itemHandler.getStackInSlot(OUTPUT_SLOT).getItem() == output.getItem();
+        return itemHandler.getStackInSlot(0).isEmpty() || itemHandler.getStackInSlot(0).is(output.getItem());
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
-        int maxCount = itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ? 64 : itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
-        int currentCount = itemHandler.getStackInSlot(OUTPUT_SLOT).getCount();
-
-        return maxCount >= currentCount + count;
+        ItemStack outputSlot = itemHandler.getStackInSlot(0);
+        return outputSlot.getCount() + count <= outputSlot.getMaxStackSize();
     }
 
+
     @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
-        return saveWithoutMetadata(pRegistries);
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return saveWithoutMetadata(registries);
     }
 
     @Nullable

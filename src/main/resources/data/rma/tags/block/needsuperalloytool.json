@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "rma:rock",
-    "rma:limestone"
+    "#rma:needhsteeltool"
   ]
 }

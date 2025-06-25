@@ -5,6 +5,7 @@ import Roma.roma;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -29,5 +30,11 @@ public class ModRecipes {
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
         TYPES.register(eventBus);
+        eventBus.addListener((FMLCommonSetupEvent e) -> {
+            e.enqueueWork(() -> {
+                System.out.println("🍞 Registered FOURCRAFTING_TYPE: " + FOURCRAFTING_TYPE.get());
+                System.out.println("🧾 Registered FOURCRAFTING_SERIALIZER: " + FOURCRAFTING_SERIALIZER.get());
+            });
+        });
     }
 }

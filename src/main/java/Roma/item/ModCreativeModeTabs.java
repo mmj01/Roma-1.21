@@ -22,13 +22,14 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
                 output.accept(Moditems.COBALTINGOT.get());
                 output.accept(Moditems.ALUMINUMINGOT.get());
                 output.accept(Moditems.CHROMIUMINGOT.get());
-                output.accept(Moditems.COPPERNGOT.get());
+                output.accept(Moditems.COPPERINGOT.get());
                 output.accept(Moditems.BRONZEINGOT.get());
                 output.accept(Moditems.BRASSINGOT.get());
-                output.accept(Moditems.STEELINGOT.get());
+                output.accept(Moditems.HSTEELINGOT.get());
                 output.accept(Moditems.TININGOT.get());
                 output.accept(Moditems.ZINCINGOT.get());
                 output.accept(Moditems.GOLDINGOT.get());
+                output.accept(Moditems.LSTEELINGOT.get());
                 output.accept(Moditems.MARBLEVENEER.get());
                 output.accept(Moditems.SUPERALLOYINGOT.get());
                 output.accept(Moditems.SILVERINGOT.get());
