@@ -1,0 +1,39 @@
+{
+  "type": "rma:roma_dim_type",
+  "generator": {
+    "settings": "rma:roma_settings",
+    "type": "minecraft:noise",
+    "biome_source": {
+      "biomes": [
+        {
+          "biome": "rma:roma_biome",
+          "parameters": {
+            "continentalness": [
+              -0.19,
+              -0.11
+            ],
+            "depth": 0.0,
+            "erosion": [
+              -1.0,
+              -0.375
+            ],
+            "humidity": [
+              -1.0,
+              -0.35
+            ],
+            "offset": 0.0,
+            "temperature": [
+              -0.45,
+              -0.15
+            ],
+            "weirdness": [
+              -0.9333,
+              -0.7666
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+

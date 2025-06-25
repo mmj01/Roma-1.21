@@ -127,6 +127,10 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
                 output.accept(ModBlocks.SUPERMARBLE.get());
                 output.accept(ModBlocks.COALORE.get());
                 output.accept(ModBlocks.FOURCRAFTING.get());
+                output.accept(ModBlocks.DIRT.get());
+                output.accept(ModBlocks.SAND.get());
+                output.accept(ModBlocks.GRASS.get());
+
 
 
 

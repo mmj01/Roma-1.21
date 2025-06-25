@@ -26,6 +26,17 @@ public class ModBlocks {
     public static final RegistryObject<Block> MARBLE = registerBlock("marble",
             ()-> new DropExperienceBlock(UniformInt.of(50,60), BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
                     .strength(75f).explosionResistance(16f).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> GRASS = registerBlock("grass",
+            ()-> new DropExperienceBlock(UniformInt.of(1,1), BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)
+                    .strength(2f).explosionResistance(1f)));
+    public static final RegistryObject<Block> SAND = registerBlock("sand",
+            ()-> new DropExperienceBlock(UniformInt.of(1,1), BlockBehaviour.Properties.ofFullCopy(Blocks.SAND)
+                    .strength(2f).explosionResistance(1f)));
+    public static final RegistryObject<Block> DIRT = registerBlock("dirt",
+            ()-> new DropExperienceBlock(UniformInt.of(1,1), BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)
+                    .strength(2f).explosionResistance(1f)));
+
     public static final RegistryObject<Block> ROCK = registerBlock("rock",
             ()-> new DropExperienceBlock(UniformInt.of(1,2), BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
                     .strength(15f).explosionResistance(8f).requiresCorrectToolForDrops()));

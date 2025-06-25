@@ -9,7 +9,6 @@ import Roma.item.Moditems;
 import Roma.item.custom.CustomAttribute;
 import Roma.screen.ModMenuTypes;
 import com.mojang.logging.LogUtils;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -22,7 +21,6 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -72,6 +70,7 @@ public class roma
 
         ModMenuTypes.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+
 
 
         //NEW REGISTERS
