@@ -130,7 +130,12 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
     }
 
     private Optional<RecipeHolder<FourCraftingRecipe>> getCurrentRecipe() {
-        FourCraftingrecipeinput input = getRecipeInput();
+        List<ItemStack> inputs = new ArrayList<>();
+        for (int i = 1; i <= 16; i++) {
+            inputs.add(itemHandler.getStackInSlot(i));
+        }
+        FourCraftingrecipeinput input = FourCraftingrecipeinput.of(inputs);
+
         return level.getRecipeManager().getRecipeFor(ModRecipes.FOURCRAFTING_TYPE.get(), input, level);
     }
 
