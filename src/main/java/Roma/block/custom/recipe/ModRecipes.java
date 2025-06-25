@@ -32,8 +32,14 @@ public class ModRecipes {
         TYPES.register(eventBus);
         eventBus.addListener((FMLCommonSetupEvent e) -> {
             e.enqueueWork(() -> {
+                roma.LOGGER.info("✅✅✅ FMLCommonSetupEvent ran. Testing recipe manager access...");
+            });
+        });
+        eventBus.addListener((FMLCommonSetupEvent e) -> {
+            e.enqueueWork(() -> {
                 System.out.println("🍞 Registered FOURCRAFTING_TYPE: " + FOURCRAFTING_TYPE.get());
                 System.out.println("🧾 Registered FOURCRAFTING_SERIALIZER: " + FOURCRAFTING_SERIALIZER.get());
+                roma.LOGGER.info("✅ Registered recipe types and serializers");
             });
         });
     }

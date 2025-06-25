@@ -49,8 +49,9 @@ public class roma
         MinecraftForge.EVENT_BUS.register(this);
 
 
+        LOGGER.info("📦 Registering mod recipes...");
         ModRecipes.register(modEventBus);
-
+        roma.LOGGER.info("📦 Forcing ModRecipes class load: {}", ModRecipes.class.getName());
 
 
 

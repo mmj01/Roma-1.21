@@ -23,7 +23,6 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.core.RegistryAccess;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -48,10 +47,10 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
             return slot != 0;
         }
     };
+
     public ItemStackHandler getItemHandler() {
         return this.itemHandler;
     }
-
 
     private final LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.of(() -> itemHandler);
 
@@ -104,16 +103,6 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, FourCraftingBlockEntity entity) {
-        System.out.println("🧾 Listing all loaded fourcrafter recipes...");
-        level.getRecipeManager()
-                .getAllRecipesFor(ModRecipes.FOURCRAFTING_TYPE.get())
-                .forEach(r -> System.out.println(" - Found: " + r.id()));
-
-        if (level.getRecipeManager().getAllRecipesFor(ModRecipes.FOURCRAFTING_TYPE.get()).isEmpty()) {
-            System.out.println("❌ No recipes found for fourcrafter type.");
-        } else {
-            System.out.println("✅ Found " + level.getRecipeManager().getAllRecipesFor(ModRecipes.FOURCRAFTING_TYPE.get()).size() + " recipes.");
-        }
         if (level.isClientSide()) return;
         if (entity.hasRecipe()) {
             entity.craftItem();
@@ -124,7 +113,7 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
         Optional<RecipeHolder<FourCraftingRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return;
 
-        ItemStack output = recipe.get().value().getResultItem(level.registryAccess());
+        ItemStack output = recipe.get().value().assemble(getRecipeInput(), level.registryAccess());
         for (int i = 1; i <= 16; i++) {
             itemHandler.extractItem(i, 1, false);
         }
@@ -133,29 +122,24 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
     }
 
     private boolean hasRecipe() {
-
         Optional<RecipeHolder<FourCraftingRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty()) return false;
 
-        ItemStack output = recipe.get().value().getResultItem(level.registryAccess());
+        ItemStack output = recipe.get().value().assemble(getRecipeInput(), level.registryAccess());
         return canInsertItemIntoOutputSlot(output) && canInsertAmountIntoOutputSlot(output.getCount());
     }
 
     private Optional<RecipeHolder<FourCraftingRecipe>> getCurrentRecipe() {
+        FourCraftingrecipeinput input = getRecipeInput();
+        return level.getRecipeManager().getRecipeFor(ModRecipes.FOURCRAFTING_TYPE.get(), input, level);
+    }
 
+    private FourCraftingrecipeinput getRecipeInput() {
         List<ItemStack> inputs = new ArrayList<>();
         for (int i = 1; i <= 16; i++) {
             inputs.add(itemHandler.getStackInSlot(i));
         }
-        FourCraftingrecipeinput input = FourCraftingrecipeinput.of(inputs);
-        System.out.println("🔎 Checking for fourcrafter recipe...");
-
-        Optional<RecipeHolder<FourCraftingRecipe>> result =
-                level.getRecipeManager().getRecipeFor(ModRecipes.FOURCRAFTING_TYPE.get(), input, level);
-
-        System.out.println("📄 Match result: " + (result.isPresent() ? result.get().id() : "no match"));
-
-        return result;
+        return FourCraftingrecipeinput.of(inputs);
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
@@ -166,7 +150,6 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
         ItemStack outputSlot = itemHandler.getStackInSlot(0);
         return outputSlot.getCount() + count <= outputSlot.getMaxStackSize();
     }
-
 
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
