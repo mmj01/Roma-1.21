@@ -78,6 +78,8 @@ public class Moditems {
             () -> new Item(new Item.Properties().food(ModFoodProperties.WHEAT)));
 
 
+
+
     public static final RegistryObject<Item> IRONAXE = ITEMS.register("ironaxe",
             () -> new AxeItem(ModToolTiers.IRON,new Item.Properties()));
     public static final RegistryObject<Item> STONEAXE = ITEMS.register("stoneaxe",

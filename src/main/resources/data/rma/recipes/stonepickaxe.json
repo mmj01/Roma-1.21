@@ -1,0 +1,13 @@
+{
+  "type": "rma:fourcrafter",
+  "ingredients": [
+    {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"},
+    {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"},
+    {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"},
+    {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"}, {"item":"minecraft:stone"}
+  ],
+  "result": {
+    "item": "rma:stonepickaxe",
+    "count": 1
+  }
+}

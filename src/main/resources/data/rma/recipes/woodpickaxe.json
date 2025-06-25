@@ -1,0 +1,13 @@
+{
+  "type": "rma:fourcrafter",
+  "ingredients": [
+    {}, {}, {}, {},
+    {}, {}, {}, {},
+    {}, {}, {}, {},
+    {}, {}, {}, {}
+  ],
+  "result": {
+    "item": "minecraft:diamond",
+    "count": 1
+  }
+}

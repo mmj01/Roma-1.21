@@ -87,5 +87,6 @@
   "item.rma.lsteelgreatsword": "Low Grade Steel Greatsword",
   "item.rma.hsteelgreatsword": "High Grade Steel Greatsword",
   "item.rma.superalloygreatsword": "Superalloy Greatsword",
-  "item.rma.superalloypickaxe": "Superalloy Pickaxe"
+  "item.rma.superalloypickaxe": "Superalloy Pickaxe",
+  "block.rma.fourcrafting": "4x4 Crafting Table"
 }

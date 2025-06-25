@@ -1,16 +1,16 @@
 package Roma.block;
 
+import Roma.block.custom.FourCraftingBlock;
 import Roma.item.Moditems;
 import Roma.roma;
-import net.minecraft.client.resources.model.Material;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -98,6 +98,10 @@ public class ModBlocks {
                     .strength(20f)
                             .explosionResistance(5f)
                             .requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> FOURCRAFTING = registerBlock("fourcrafting",
+            () -> new FourCraftingBlock(BlockBehaviour.Properties.of().strength(2f,5f)));
+
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

@@ -1,10 +1,13 @@
 package Roma;
 
 import Roma.block.ModBlocks;
+import Roma.block.custom.recipe.ModRecipes;
+import Roma.block.entity.ModBlockEntities;
 import Roma.item.ModCreativeModeTabs;
 import Roma.item.Moditems;
 
 import Roma.item.custom.CustomAttribute;
+import Roma.screen.ModMenuTypes;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.api.distmarker.Dist;
@@ -46,6 +49,9 @@ public class roma
         MinecraftForge.EVENT_BUS.register(this);
 
 
+        ModRecipes.register(modEventBus);
+
+
 
 
 
@@ -56,10 +62,17 @@ public class roma
 
 
         //Place Registers here for new items
+        ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         Moditems.register(modEventBus);
-        ModBlocks.register(modEventBus);
+
         CustomAttribute.register(modEventBus);
+
+
+        ModMenuTypes.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+
+
         //NEW REGISTERS
 
 

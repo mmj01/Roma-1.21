@@ -125,6 +125,8 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
                 output.accept(ModBlocks.COBALTORE.get());
                 output.accept(ModBlocks.SUPERMARBLE.get());
                 output.accept(ModBlocks.COALORE.get());
+                output.accept(ModBlocks.FOURCRAFTING.get());
+
 
 
 
