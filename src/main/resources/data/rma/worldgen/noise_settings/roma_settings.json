@@ -1,7 +1,7 @@
 {
   "aquifers_enabled": true,
   "default_block": {
-    "Name": "minecraft:stone"
+    "Name": "rma:rock"
   },
   "default_fluid": {
     "Name": "minecraft:water",
@@ -9,15 +9,15 @@
       "level": "0"
     }
   },
-  "sea_level": 63,
-  "ore_veins_enabled": false,
+  "sea_level": 1,
+  "ore_veins_enabled": true,
   "disable_mob_generation": false,
   "legacy_random_source": false,
   "noise": {
-    "height": 384,
-    "min_y": -64,
+    "height": 1500,
+    "min_y": -192,
     "size_horizontal": 1,
-    "size_vertical": 2
+    "size_vertical": 3
   },
   "noise_router": {
     "barrier": {
@@ -108,6 +108,7 @@
                                     "argument2": {
                                       "type": "minecraft:add",
                                       "argument1": {
+
                                         "type": "minecraft:clamp",
                                         "input": {
                                           "type": "minecraft:add",

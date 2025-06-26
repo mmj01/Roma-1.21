@@ -12,6 +12,7 @@ public class ModTags {
 
         public static final TagKey<Block> WOOD = createTag("wood");
         public static final TagKey<Block> STONE = createTag("stone");
+        public static final TagKey<Block> STONE_ORE_REPLACEABLES = createTag("stone_ore_replaceables");
 
 
         public static final TagKey<Block> NEEDSWOODENTOOL = createTag("needswoodentool");

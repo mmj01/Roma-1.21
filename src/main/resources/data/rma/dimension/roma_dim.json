@@ -1,39 +1,36 @@
 {
   "type": "rma:roma_dim_type",
   "generator": {
-    "settings": "rma:roma_settings",
     "type": "minecraft:noise",
     "biome_source": {
+      "type": "minecraft:multi_noise",
       "biomes": [
         {
           "biome": "rma:roma_biome",
           "parameters": {
-            "continentalness": [
-              -0.19,
-              -0.11
-            ],
-            "depth": 0.0,
-            "erosion": [
-              -1.0,
-              -0.375
-            ],
-            "humidity": [
-              -1.0,
-              -0.35
-            ],
+            "continentalness": -1.0,
+            "depth": -1.0,
+            "erosion": 0.0,
+            "humidity": 0.0,
             "offset": 0.0,
-            "temperature": [
-              -0.45,
-              -0.15
-            ],
-            "weirdness": [
-              -0.9333,
-              -0.7666
-            ]
+            "temperature": 0.0,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "minecraft:ocean",
+          "parameters": {
+            "continentalness": 0.1,
+            "depth": 0.0,
+            "erosion": 0.1,
+            "humidity": 0.6,
+            "offset": 0.0,
+            "temperature": 0.3,
+            "weirdness": 0.0
           }
         }
       ]
-    }
+    },
+    "settings": "rma:roma_settings"
   }
 }
-

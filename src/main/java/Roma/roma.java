@@ -8,6 +8,8 @@ import Roma.item.Moditems;
 
 import Roma.item.custom.CustomAttribute;
 import Roma.screen.ModMenuTypes;
+import Roma.worldgen.Biome.ModTerrablender;
+import Roma.worldgen.Biome.surface.ModSurfaceRules;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -22,6 +24,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import terrablender.api.SurfaceRuleManager;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(roma.MOD_ID)
@@ -70,6 +73,7 @@ public class roma
 
         ModMenuTypes.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+        ModTerrablender.registerBiomes();
 
 
 
@@ -94,7 +98,7 @@ public class roma
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
+        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules.makeRules());
     }
 
     // Add the example block item to the building blocks tab

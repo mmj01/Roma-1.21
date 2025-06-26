@@ -13,7 +13,5 @@ public class ModOrePlacement {
         return orePlacement(CountPlacement.of(pCount), pHeightRange);
     }
 
-    public static List<PlacementModifier> rareOrePlacement(int pChance, PlacementModifier pHeightRange) {
-        return orePlacement(RarityFilter.onAverageOnceEvery(pChance), pHeightRange);
-    }
+
 }
