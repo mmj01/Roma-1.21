@@ -41,16 +41,60 @@ public class ModConfiguredFeatures {
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceables = new TagMatchTest(ModTags.Blocks.STONE_ORE_REPLACEABLES);
 
-        register(context, COPPER, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.COPPERORE.get().defaultBlockState())), 16));
-        register(context, ALUMINUM, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.ALUMINUMORE.get().defaultBlockState())), 8));
-        register(context, IRON, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.IRONORE.get().defaultBlockState())), 9));
-        register(context, COBALT, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.COBALTORE.get().defaultBlockState())), 7));
-        register(context, CHROMIUM, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.CHROMIUMORE.get().defaultBlockState())), 7));
-        register(context, PLATINUM, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.PLATINUMORE.get().defaultBlockState())), 6));
-        register(context, GOLD, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.GOLDORE.get().defaultBlockState())), 8));
-        register(context, TIN, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.TINORE.get().defaultBlockState())), 10));
-        register(context, SILVER, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.SILVERORE.get().defaultBlockState())), 8));
-        register(context, ZINC, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.ZINCORE.get().defaultBlockState())), 9));
-        register(context, NICKEL, Feature.ORE, new OreConfiguration(List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.NICKELORE.get().defaultBlockState())), 7));
+        List<OreConfiguration.TargetBlockState> copperTargets = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.COPPERORE.get().defaultBlockState())
+        );
+        register(context, COPPER, Feature.ORE, new OreConfiguration(copperTargets, 16));
+
+        List<OreConfiguration.TargetBlockState> aluminumTargets = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.ALUMINUMORE.get().defaultBlockState())
+        );
+        register(context, ALUMINUM, Feature.ORE, new OreConfiguration(aluminumTargets, 8));
+
+        List<OreConfiguration.TargetBlockState> ironTargets = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.IRONORE.get().defaultBlockState())
+        );
+        register(context, IRON, Feature.ORE, new OreConfiguration(ironTargets, 9));
+
+        List<OreConfiguration.TargetBlockState> cobaltTargets = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.COBALTORE.get().defaultBlockState())
+        );
+        register(context, COBALT, Feature.ORE, new OreConfiguration(cobaltTargets, 7));
+
+        List<OreConfiguration.TargetBlockState> chromiumTargets = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.CHROMIUMORE.get().defaultBlockState())
+        );
+        register(context, CHROMIUM, Feature.ORE, new OreConfiguration(chromiumTargets, 7));
+
+        List<OreConfiguration.TargetBlockState> platinumTargets = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.PLATINUMORE.get().defaultBlockState())
+        );
+        register(context, PLATINUM, Feature.ORE, new OreConfiguration(platinumTargets, 6));
+
+        List<OreConfiguration.TargetBlockState> goldTargets = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.GOLDORE.get().defaultBlockState())
+        );
+        register(context, GOLD, Feature.ORE, new OreConfiguration(goldTargets, 8));
+
+        List<OreConfiguration.TargetBlockState> tinTargets = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.TINORE.get().defaultBlockState())
+        );
+        register(context, TIN, Feature.ORE, new OreConfiguration(tinTargets, 10));
+
+        List<OreConfiguration.TargetBlockState> silverTargets = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.SILVERORE.get().defaultBlockState())
+        );
+        register(context, SILVER, Feature.ORE, new OreConfiguration(silverTargets, 8));
+
+        List<OreConfiguration.TargetBlockState> zincTargets = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.ZINCORE.get().defaultBlockState())
+        );
+        register(context, ZINC, Feature.ORE, new OreConfiguration(zincTargets, 9));
+
+        List<OreConfiguration.TargetBlockState> nickelTargets = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.NICKELORE.get().defaultBlockState())
+        );
+        register(context, NICKEL, Feature.ORE, new OreConfiguration(nickelTargets, 7));
     }
+
 }

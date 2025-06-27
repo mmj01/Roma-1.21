@@ -15,9 +15,7 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import java.util.List;
 
 public class ModPlacedFeatures {
-    private static ResourceKey<PlacedFeature> registerKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(name,roma.MOD_ID));
-    }
+
 
     private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration,
                                  List<PlacementModifier> modifiers) {
@@ -61,5 +59,8 @@ public class ModPlacedFeatures {
                 ModOrePlacement.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(70))));
         register(context, NICKEL, configured.getOrThrow(ModConfiguredFeatures.NICKEL),
                 ModOrePlacement.commonOrePlacement(8, HeightRangePlacement.uniform(VerticalAnchor.absolute(-40), VerticalAnchor.absolute(64))));
+    }
+    private static ResourceKey<PlacedFeature> registerKey(String name) {
+        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(name,roma.MOD_ID));
     }
 }

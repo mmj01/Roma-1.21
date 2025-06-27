@@ -6,7 +6,7 @@
     "targets": [
       {
         "state": {
-          "Name": "rma:copperore"
+          "Name": "rma:ironore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

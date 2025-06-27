@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "rma:roma_biome",
+  "features": "rma:tin_ore_placed",
+  "step": "underground_ores"
+}
