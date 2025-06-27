@@ -114,7 +114,7 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
         if (recipe.isEmpty()) return;
 
         ItemStack output = recipe.get().value().assemble(getRecipeInput(), level.registryAccess());
-        for (int i = 1; i <= 16; i++) {
+        for (int i = 0; i <itemHandler.getSlots(); i++) {
             itemHandler.extractItem(i, 1, false);
         }
         itemHandler.setStackInSlot(0, new ItemStack(output.getItem(),
@@ -131,7 +131,7 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
 
     private Optional<RecipeHolder<FourCraftingRecipe>> getCurrentRecipe() {
         List<ItemStack> inputs = new ArrayList<>();
-        for (int i = 1; i <= 16; i++) {
+        for (int i = 0; i <itemHandler.getSlots(); i++) {
             inputs.add(itemHandler.getStackInSlot(i));
         }
         FourCraftingrecipeinput input = FourCraftingrecipeinput.of(inputs);
@@ -141,7 +141,7 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
 
     private FourCraftingrecipeinput getRecipeInput() {
         List<ItemStack> inputs = new ArrayList<>();
-        for (int i = 1; i <= 16; i++) {
+        for (int i = 0; i <itemHandler.getSlots(); i++) {
             inputs.add(itemHandler.getStackInSlot(i));
         }
         return FourCraftingrecipeinput.of(inputs);

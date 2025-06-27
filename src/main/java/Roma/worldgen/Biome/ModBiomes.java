@@ -16,7 +16,7 @@ import net.minecraft.world.level.biome.*;
 
 public class ModBiomes {
     public static final ResourceKey<Biome> ROMA_BIOME = ResourceKey.create(Registries.BIOME,
-             ResourceLocation.fromNamespaceAndPath("roma_biome", roma.MOD_ID));
+             ResourceLocation.fromNamespaceAndPath(roma.MOD_ID,"roma_biome"));
 
     public static void boostrap(BootstrapContext<Biome> context) {
         context.register(ROMA_BIOME, romaBiome(context));

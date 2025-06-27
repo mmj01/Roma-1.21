@@ -61,6 +61,6 @@ public class ModPlacedFeatures {
                 ModOrePlacement.commonOrePlacement(8, HeightRangePlacement.uniform(VerticalAnchor.absolute(-40), VerticalAnchor.absolute(64))));
     }
     private static ResourceKey<PlacedFeature> registerKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(name,roma.MOD_ID));
+        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(roma.MOD_ID, name));
     }
 }

@@ -31,7 +31,7 @@ public class ModDimension {
     public static final ResourceKey<DimensionType> ROMADIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
             ResourceLocation.fromNamespaceAndPath("romadim_type", roma.MOD_ID));
     public static final ResourceKey<NoiseGeneratorSettings> ROMA_NOISE_SETTINGS =
-            ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath("roma_settings", roma.MOD_ID));
+            ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(roma.MOD_ID,"roma_settings"));
 
 
     public static void bootstrapType(BootstrapContext<DimensionType> context) {
