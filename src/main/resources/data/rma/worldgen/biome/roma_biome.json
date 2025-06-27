@@ -6,7 +6,7 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 0.8,
+  "downfall": 0.9,
   "effects": {
     "fog_color": 12638463,
     "foliage_color": 13763580,
@@ -27,23 +27,7 @@
     "water_color": 4159204,
     "water_fog_color": 3286275
   },
-  "features": [
-    [], [], [], [], [], [],
-    [
-      "rma:ore_aluminum_placed",
-      "rma:ore_iron_placed",
-      "rma:ore_copper_placed",
-      "rma:ore_cobalt_placed",
-      "rma:ore_chromium_placed",
-      "rma:ore_platinum_placed",
-      "rma:ore_gold_placed",
-      "rma:ore_tin_placed",
-      "rma:ore_silver_placed",
-      "rma:ore_zinc_placed",
-      "rma:ore_nickel_placed"
-    ],
-    [], [], [], []
-  ],
+  "features": [],
   "has_precipitation": true,
   "spawn_costs": {},
   "spawners": {},

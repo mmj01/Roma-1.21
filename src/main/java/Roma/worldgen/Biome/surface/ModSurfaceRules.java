@@ -11,23 +11,22 @@ public class ModSurfaceRules {
     private static final SurfaceRules.RuleSource DIRT = makeStateRule(ModBlocks.DIRT.get());
     private static final SurfaceRules.RuleSource GRASS_BLOCK = makeStateRule(ModBlocks.GRASS.get());
     private static final SurfaceRules.RuleSource STONE = makeStateRule(ModBlocks.ROCK.get());
-    private static final SurfaceRules.RuleSource SAND = makeStateRule(ModBlocks.SAND.get());
 
 
 
     public static SurfaceRules.RuleSource makeRules() {
         SurfaceRules.ConditionSource isAtOrAboveWaterLevel = SurfaceRules.waterBlockCheck(-1, 0);
 
-        SurfaceRules.RuleSource grassSurface = SurfaceRules.sequence(SurfaceRules.ifTrue(isAtOrAboveWaterLevel, GRASS_BLOCK), SAND);
+        SurfaceRules.RuleSource grassSurface = SurfaceRules.sequence(SurfaceRules.ifTrue(isAtOrAboveWaterLevel, GRASS_BLOCK), DIRT);
 
         return SurfaceRules.sequence(
                 SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.ROMA_BIOME),
-                                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, DIRT)),
+                                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, STONE)),
                         SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, STONE)),
 
 
                 // Default to a grass and dirt surface
-                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, grassSurface)
+                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, STONE)
         );
     }
 

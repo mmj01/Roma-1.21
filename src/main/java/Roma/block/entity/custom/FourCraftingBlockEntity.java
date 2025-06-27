@@ -33,7 +33,13 @@ import java.util.List;
 import java.util.Optional;
 
 public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(17) {
+    public static final int GRID_WIDTH = 4;
+    public static final int GRID_HEIGHT = 4;
+    public static final int GRID_SIZE = GRID_WIDTH * GRID_HEIGHT;
+    public static final int OUTPUT_SLOT = 0;
+    public static final int TOTAL_SLOTS = GRID_SIZE + 1;
+
+    private final ItemStackHandler itemHandler = new ItemStackHandler(TOTAL_SLOTS) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -44,18 +50,18 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
 
         @Override
         public boolean isItemValid(int slot, ItemStack stack) {
-            return slot != 0;
+            return slot != OUTPUT_SLOT; // prevent inserting into output
         }
     };
-
-    public ItemStackHandler getItemHandler() {
-        return this.itemHandler;
-    }
 
     private final LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.of(() -> itemHandler);
 
     public FourCraftingBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.fourcraftingbe.get(), pos, state);
+    }
+
+    public ItemStackHandler getItemHandler() {
+        return this.itemHandler;
     }
 
     @Override
@@ -114,11 +120,12 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
         if (recipe.isEmpty()) return;
 
         ItemStack output = recipe.get().value().assemble(getRecipeInput(), level.registryAccess());
-        for (int i = 0; i <itemHandler.getSlots(); i++) {
+        for (int i = 1; i < TOTAL_SLOTS; i++) {
             itemHandler.extractItem(i, 1, false);
         }
-        itemHandler.setStackInSlot(0, new ItemStack(output.getItem(),
-                itemHandler.getStackInSlot(0).getCount() + output.getCount()));
+        ItemStack currentOutput = itemHandler.getStackInSlot(OUTPUT_SLOT);
+        itemHandler.setStackInSlot(OUTPUT_SLOT,
+                new ItemStack(output.getItem(), currentOutput.getCount() + output.getCount()));
     }
 
     private boolean hasRecipe() {
@@ -131,28 +138,28 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
 
     private Optional<RecipeHolder<FourCraftingRecipe>> getCurrentRecipe() {
         List<ItemStack> inputs = new ArrayList<>();
-        for (int i = 0; i <itemHandler.getSlots(); i++) {
+        for (int i = 1; i < TOTAL_SLOTS; i++) {
             inputs.add(itemHandler.getStackInSlot(i));
         }
         FourCraftingrecipeinput input = FourCraftingrecipeinput.of(inputs);
-
         return level.getRecipeManager().getRecipeFor(ModRecipes.FOURCRAFTING_TYPE.get(), input, level);
     }
 
     private FourCraftingrecipeinput getRecipeInput() {
         List<ItemStack> inputs = new ArrayList<>();
-        for (int i = 0; i <itemHandler.getSlots(); i++) {
+        for (int i = 1; i < TOTAL_SLOTS; i++) {
             inputs.add(itemHandler.getStackInSlot(i));
         }
         return FourCraftingrecipeinput.of(inputs);
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
-        return itemHandler.getStackInSlot(0).isEmpty() || itemHandler.getStackInSlot(0).is(output.getItem());
+        return itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty()
+                || itemHandler.getStackInSlot(OUTPUT_SLOT).is(output.getItem());
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
-        ItemStack outputSlot = itemHandler.getStackInSlot(0);
+        ItemStack outputSlot = itemHandler.getStackInSlot(OUTPUT_SLOT);
         return outputSlot.getCount() + count <= outputSlot.getMaxStackSize();
     }
 
