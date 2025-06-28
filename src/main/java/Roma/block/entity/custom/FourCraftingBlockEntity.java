@@ -7,6 +7,7 @@ import Roma.block.entity.ModBlockEntities;
 import Roma.screen.custom.FourCraftingmenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -18,6 +19,7 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
@@ -28,47 +30,64 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider {
-    public static final int GRID_WIDTH = 4;
-    public static final int GRID_HEIGHT = 4;
-    public static final int GRID_SIZE = GRID_WIDTH * GRID_HEIGHT;
-    public static final int OUTPUT_SLOT = 0;
-    public static final int TOTAL_SLOTS = GRID_SIZE + 1;
-
-    private final ItemStackHandler itemHandler = new ItemStackHandler(TOTAL_SLOTS) {
+    public static final int INPUT_SLOT_COUNT = 16;
+    public static final int OUTPUT_SLOT = 16;
+    public final ItemStackHandler itemHandler = new ItemStackHandler(17) {
         @Override
         protected void onContentsChanged(int slot) {
+            //add somehow to match recipe?
+
             setChanged();
-            if (!level.isClientSide()) {
+            //what does it do?
+            if(!level.isClientSide()) {
+                //updates gui
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
             }
         }
-
-        @Override
-        public boolean isItemValid(int slot, ItemStack stack) {
-            return slot != OUTPUT_SLOT; // prevent inserting into output
-        }
     };
 
-    private final LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.of(() -> itemHandler);
 
-    public FourCraftingBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.fourcraftingbe.get(), pos, state);
-    }
 
-    public ItemStackHandler getItemHandler() {
-        return this.itemHandler;
+    private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
+
+    protected final ContainerData data;
+    private int progress = 0;
+    private int maxProgress = 72;
+
+    public FourCraftingBlockEntity(BlockPos pPos, BlockState pBlockState) {
+        super(ModBlockEntities.fourcraftingbe.get(), pPos, pBlockState);
+        data = new ContainerData() {
+            @Override
+            public int get(int i) {
+                return switch (i) {
+                    case 0 -> FourCraftingBlockEntity.this.progress;
+                    case 1 -> FourCraftingBlockEntity.this.maxProgress;
+                    default -> 0;
+                };
+            }
+
+            @Override
+            public void set(int i, int value) {
+                switch (i) {
+                    case 0: FourCraftingBlockEntity.this.progress = value;
+                    case 1: FourCraftingBlockEntity.this.maxProgress = value;
+                }
+            }
+
+            @Override
+            public int getCount() {
+                return 2;
+            }
+        };
     }
 
     @Override
     public void onLoad() {
         super.onLoad();
-        lazyItemHandler.invalidate();
-        lazyItemHandler.cast();
+        lazyItemHandler = LazyOptional.of(() -> itemHandler);
     }
 
     @Override
@@ -82,90 +101,110 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
         for (int i = 0; i < itemHandler.getSlots(); i++) {
             inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
+
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        tag.put("inventory", itemHandler.serializeNBT(registries));
-        super.saveAdditional(tag, registries);
+    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
+        pTag.put("inventory", itemHandler.serializeNBT(pRegistries));
+        pTag.putInt("four_crafting.progress", progress);
+        pTag.putInt("four_crafting.max_progress", maxProgress);
+
+        super.saveAdditional(pTag, pRegistries);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.loadAdditional(tag, registries);
-        itemHandler.deserializeNBT(registries, tag.getCompound("inventory"));
+    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
+        super.loadAdditional(pTag, pRegistries);
+
+        itemHandler.deserializeNBT(pRegistries, pTag.getCompound("inventory"));
+        progress = pTag.getInt("four_crafting.progress");
+        maxProgress = pTag.getInt("four_crafting.max_progress");
     }
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("block.roma.four_crafting");
+        return Component.translatable("block.rma.fourcrafting");
     }
 
     @Nullable
     @Override
-    public AbstractContainerMenu createMenu(int containerId, Inventory playerInventory, Player player) {
-        return new FourCraftingmenu(containerId, playerInventory, this);
+    public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
+        return new FourCraftingmenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
-    public static void tick(Level level, BlockPos pos, BlockState state, FourCraftingBlockEntity entity) {
-        if (level.isClientSide()) return;
-        if (entity.hasRecipe()) {
-            entity.craftItem();
+    public void tick(Level level, BlockPos blockPos, BlockState blockState) {
+        //make sure it can find the recipes using matches()
+        if(hasRecipe()) {
+            increaseCraftingProgress();
+            setChanged(level, blockPos, blockState);
+
+            if (hasCraftingFinished()) {
+                craftItem();
+                resetProgress();
+            }
+        } else {
+            resetProgress();
         }
+    }
+
+    private void resetProgress() {
+        this.progress = 0;
+        this.maxProgress = 72;
     }
 
     private void craftItem() {
         Optional<RecipeHolder<FourCraftingRecipe>> recipe = getCurrentRecipe();
-        if (recipe.isEmpty()) return;
+        ItemStack output = recipe.get().value().output();
 
-        ItemStack output = recipe.get().value().assemble(getRecipeInput(), level.registryAccess());
-        for (int i = 1; i < TOTAL_SLOTS; i++) {
+        for (int i = 0; i < INPUT_SLOT_COUNT; i++) {
             itemHandler.extractItem(i, 1, false);
         }
-        ItemStack currentOutput = itemHandler.getStackInSlot(OUTPUT_SLOT);
-        itemHandler.setStackInSlot(OUTPUT_SLOT,
-                new ItemStack(output.getItem(), currentOutput.getCount() + output.getCount()));
+
+        itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
+                itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
+    }
+
+    private boolean hasCraftingFinished() {
+        return this.progress >= this.maxProgress;
+    }
+
+    private void increaseCraftingProgress() {
+        progress++;
     }
 
     private boolean hasRecipe() {
         Optional<RecipeHolder<FourCraftingRecipe>> recipe = getCurrentRecipe();
-        if (recipe.isEmpty()) return false;
-
-        ItemStack output = recipe.get().value().assemble(getRecipeInput(), level.registryAccess());
+        if(recipe.isEmpty()) {
+            return false;
+        }
+        ItemStack output = recipe.get().value().output();
         return canInsertItemIntoOutputSlot(output) && canInsertAmountIntoOutputSlot(output.getCount());
     }
 
     private Optional<RecipeHolder<FourCraftingRecipe>> getCurrentRecipe() {
-        List<ItemStack> inputs = new ArrayList<>();
-        for (int i = 1; i < TOTAL_SLOTS; i++) {
-            inputs.add(itemHandler.getStackInSlot(i));
+        NonNullList<ItemStack> inputItems = NonNullList.withSize(16, ItemStack.EMPTY);
+        for (int i = 0; i < 16; i++) {
+            inputItems.set(i, itemHandler.getStackInSlot(i));
         }
-        FourCraftingrecipeinput input = FourCraftingrecipeinput.of(inputs);
-        return level.getRecipeManager().getRecipeFor(ModRecipes.FOURCRAFTING_TYPE.get(), input, level);
-    }
-
-    private FourCraftingrecipeinput getRecipeInput() {
-        List<ItemStack> inputs = new ArrayList<>();
-        for (int i = 1; i < TOTAL_SLOTS; i++) {
-            inputs.add(itemHandler.getStackInSlot(i));
-        }
-        return FourCraftingrecipeinput.of(inputs);
+        return this.level.getRecipeManager()
+                .getRecipeFor(ModRecipes.FOURCRAFTING_TYPE.get(), new FourCraftingrecipeinput(inputItems), level);
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
-        return itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty()
-                || itemHandler.getStackInSlot(OUTPUT_SLOT).is(output.getItem());
+        ItemStack current = itemHandler.getStackInSlot(OUTPUT_SLOT);
+        return current.isEmpty() || current.getItem().equals(output.getItem());
     }
 
-    private boolean canInsertAmountIntoOutputSlot(int count) {
-        ItemStack outputSlot = itemHandler.getStackInSlot(OUTPUT_SLOT);
-        return outputSlot.getCount() + count <= outputSlot.getMaxStackSize();
+    private boolean canInsertAmountIntoOutputSlot(int amount) {
+        ItemStack current = itemHandler.getStackInSlot(OUTPUT_SLOT);
+        return current.getCount() + amount <= current.getMaxStackSize();
     }
 
     @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
-        return saveWithoutMetadata(registries);
+    public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
+        return saveWithoutMetadata(pRegistries);
     }
 
     @Nullable
@@ -173,4 +212,10 @@ public class FourCraftingBlockEntity extends BlockEntity implements MenuProvider
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
     }
+
+    public IItemHandler getItemHandler() {
+        return itemHandler;
+    }
+
+
 }

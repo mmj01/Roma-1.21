@@ -11,37 +11,54 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.SlotItemHandler;
+import org.jetbrains.annotations.Nullable;
 
 public class FourCraftingmenu extends AbstractContainerMenu {
-    public final FourCraftingBlockEntity blockEntity;
-    private final Level level;
+    public FourCraftingBlockEntity blockEntity;
+    private Level level;
+    private ContainerData data;
 
     public FourCraftingmenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()));
+        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
-    public FourCraftingmenu(int pContainerId, Inventory inv, BlockEntity entity) {
+    public FourCraftingmenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.FOURCRAFTINGMENU.get(), pContainerId);
         this.blockEntity = ((FourCraftingBlockEntity) entity);
         this.level = inv.player.level();
+        this.data = data;
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        int index = 1;
-        int gridStartX = 29;
-        int gridStartY = 26;
-
+        // Add 4x4 crafting grid slots (16 total)
+        int index = 0;
         for (int row = 0; row < 4; row++) {
             for (int col = 0; col < 4; col++) {
-                this.addSlot(new SlotItemHandler(blockEntity.getItemHandler(), index,
-                        gridStartX + col * 19,
-                        gridStartY + row * 18));
-                index++;
+                this.addSlot(new SlotItemHandler(blockEntity.getItemHandler(), index++, 8 + col * 18, 18 + row * 18));
             }
         }
 
-        this.addSlot(new SlotItemHandler(blockEntity.getItemHandler(), 0, 146, 54));
+        // Add output slot
+        this.addSlot(new SlotItemHandler(blockEntity.getItemHandler(), 16, 134, 36));
+
+        addDataSlots(data);
+    }
+
+    protected FourCraftingmenu(@Nullable MenuType<?> pMenuType, int pContainerId) {
+        super(pMenuType, pContainerId);
+    }
+
+    public boolean isCrafting() {
+        return data.get(0) > 0;
+    }
+
+    public int getScaledArrowProgress() {
+        int progress = this.data.get(0);
+        int maxProgress = this.data.get(1);
+        int arrowPixelSize = 24;
+
+        return maxProgress != 0 && progress != 0 ? progress * arrowPixelSize / maxProgress : 0;
     }
 
     private static final int HOTBAR_SLOT_COUNT = 9;
@@ -51,6 +68,7 @@ public class FourCraftingmenu extends AbstractContainerMenu {
     private static final int VANILLA_SLOT_COUNT = HOTBAR_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT;
     private static final int VANILLA_FIRST_SLOT_INDEX = 0;
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
+
     private static final int TE_INVENTORY_SLOT_COUNT = 17;
 
     @Override
@@ -84,29 +102,20 @@ public class FourCraftingmenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player pPlayer) {
-        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                pPlayer, ModBlocks.FOURCRAFTING.get());
+        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), pPlayer, ModBlocks.FOURCRAFTING.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {
-        int startX = 8;
-        int startY = 122;
-
-        for (int row = 0; row < 3; ++row) {
-            for (int col = 0; col < 9; ++col) {
-                this.addSlot(new Slot(playerInventory, col + row * 9 + 9,
-                        startX + col * 18,
-                        startY + row * 18));
+        for (int i = 0; i < 3; ++i) {
+            for (int l = 0; l < 9; ++l) {
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 104 + i * 18));
             }
         }
     }
 
     private void addPlayerHotbar(Inventory playerInventory) {
-        int startX = 8;
-        int startY = 180;
-
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, startX + i * 18, startY));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 162));
         }
     }
 }

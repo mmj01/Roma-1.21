@@ -8,13 +8,13 @@
         {
           "biome": "rma:roma_biome",
           "parameters": {
-            "continentalness": -1.0,
-            "depth": -1.0,
-            "erosion": 0.0,
-            "humidity": 0.0,
+            "continentalness": 2.0,
+            "depth": 2.0,
+            "erosion": 2.0,
+            "humidity": 0.9,
             "offset": 0.0,
             "temperature": 0.0,
-            "weirdness": 0.0
+            "weirdness": 2.0
           }
         }
       ]

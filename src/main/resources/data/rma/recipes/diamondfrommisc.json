@@ -1,13 +1,14 @@
 {
-  "type": "rma:fourcrafter",
+  "type": "roma:four_crafting",
+  "width": 4,
+  "height": 2,
   "ingredients": [
-{"item": "minecraft:stone"}, {"item": "minecraft:stone"}, {"item": "minecraft:stone"}, {"item": "minecraft:stone"},
-{"item": "minecraft:stone"}, {"item": "minecraft:stone"}, {"item": "minecraft:stone"}, {"item": "minecraft:stone"},
-{"item": "minecraft:stone"}, {"item": "minecraft:stone"}, {"item": "minecraft:stone"}, {"item": "minecraft:stone"},
-{"item": "minecraft:stone"}, {"item": "minecraft:stone"}, {"item": "minecraft:stone"}, {"item": "minecraft:stone"}
-],
+    { "item": "minecraft:stick" }, { "item": "minecraft:stick" }, {}, {},
+    { "item": "minecraft:iron_ingot" }, { "item": "minecraft:iron_ingot" }, {}, {},
+    {}, {}, {}, {},
+    {}, {}, {}, {}
+  ],
   "result": {
-    "item": "minecraft:diamond",
-    "count": 1
+    "item": "minecraft:iron_sword"
   }
 }

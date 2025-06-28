@@ -2,20 +2,15 @@ package Roma.block.custom.recipe;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeInput;
+import net.minecraft.core.NonNullList;
 
-import java.util.ArrayList;
-import java.util.List;
+public class FourCraftingrecipeinput implements RecipeInput {
+    private final NonNullList<ItemStack> items; // 16-slot 4x4 grid
 
-public record FourCraftingrecipeinput(List<ItemStack> items) implements RecipeInput {
-
-    public static FourCraftingrecipeinput of(List<ItemStack> rawItems) {
-        return new FourCraftingrecipeinput(padTo16(rawItems));
-    }
-
-    private static List<ItemStack> padTo16(List<ItemStack> items) {
-        List<ItemStack> padded = new ArrayList<>(items);
-        while (padded.size() < 16) padded.add(ItemStack.EMPTY);
-        return padded;
+    public FourCraftingrecipeinput(NonNullList<ItemStack> items) {
+        if (items.size() != 16)
+            throw new IllegalArgumentException("Expected 16 items for 4x4 grid");
+        this.items = items;
     }
 
     @Override
@@ -26,5 +21,17 @@ public record FourCraftingrecipeinput(List<ItemStack> items) implements RecipeIn
     @Override
     public int size() {
         return 16;
+    }
+
+    public int getWidth() {
+        return 4;
+    }
+
+    public int getHeight() {
+        return 4;
+    }
+
+    public NonNullList<ItemStack> getItems() {
+        return items;
     }
 }

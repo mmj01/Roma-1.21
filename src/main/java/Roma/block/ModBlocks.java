@@ -9,7 +9,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -111,7 +110,9 @@ public class ModBlocks {
                             .requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> FOURCRAFTING = registerBlock("fourcrafting",
-            () -> new FourCraftingBlock(BlockBehaviour.Properties.of().strength(2f,5f)));
+            () -> new FourCraftingBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)));
+
+
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

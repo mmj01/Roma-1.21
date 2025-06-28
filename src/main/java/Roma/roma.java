@@ -3,6 +3,7 @@ package Roma;
 import Roma.block.ModBlocks;
 import Roma.block.custom.recipe.ModRecipes;
 import Roma.block.entity.ModBlockEntities;
+import Roma.block.entity.custom.FourCraftingScreen;
 import Roma.item.ModCreativeModeTabs;
 import Roma.item.Moditems;
 
@@ -11,6 +12,7 @@ import Roma.screen.ModMenuTypes;
 import Roma.worldgen.Biome.ModTerrablender;
 import Roma.worldgen.Biome.surface.ModSurfaceRules;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -121,6 +123,7 @@ public class roma
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            MenuScreens.register(ModMenuTypes.FOURCRAFTINGMENU.get(), FourCraftingScreen::new);
         }
     }
 }

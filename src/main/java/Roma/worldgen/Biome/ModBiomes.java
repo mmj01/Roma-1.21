@@ -59,10 +59,6 @@ public class ModBiomes {
                 .generationSettings(biomeBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .specialEffects((new BiomeSpecialEffects.Builder())
-                        .waterColor(0x3F76E4)
-                        .waterFogColor(0x050533)
-                        .skyColor(0x77ADFF)
-                        .fogColor(0xC0D8FF)
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
                         .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_GAME)).build())
                 .build();
