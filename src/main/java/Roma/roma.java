@@ -1,14 +1,12 @@
 package Roma;
 
 import Roma.block.ModBlocks;
-import Roma.block.custom.recipe.ModRecipes;
-import Roma.block.entity.ModBlockEntities;
-import Roma.block.entity.custom.FourCraftingScreen;
+
 import Roma.item.ModCreativeModeTabs;
 import Roma.item.Moditems;
 
 import Roma.item.custom.CustomAttribute;
-import Roma.screen.ModMenuTypes;
+
 import Roma.worldgen.Biome.ModTerrablender;
 import Roma.worldgen.Biome.surface.ModSurfaceRules;
 import com.mojang.logging.LogUtils;
@@ -52,9 +50,7 @@ public class roma
         MinecraftForge.EVENT_BUS.register(this);
 
 
-        LOGGER.info("📦 Registering mod recipes...");
-        ModRecipes.register(modEventBus);
-        roma.LOGGER.info("📦 Forcing ModRecipes class load: {}", ModRecipes.class.getName());
+
 
 
 
@@ -66,15 +62,10 @@ public class roma
 
 
         //Place Registers here for new items
+        Moditems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
-        Moditems.register(modEventBus);
-
         CustomAttribute.register(modEventBus);
-
-
-        ModMenuTypes.register(modEventBus);
-        ModBlockEntities.register(modEventBus);
         ModTerrablender.registerBiomes();
 
 
@@ -123,7 +114,7 @@ public class roma
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            MenuScreens.register(ModMenuTypes.FOURCRAFTINGMENU.get(), FourCraftingScreen::new);
+
         }
     }
 }

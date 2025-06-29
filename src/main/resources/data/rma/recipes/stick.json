@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "my_mod:modded_planks"
+    },
+    {
+      "item": "my_mod:modded_planks"
+    }
+  ],
+  "result": {
+    "item": "minecraft:stick",
+    "count": 8
+  }
+}

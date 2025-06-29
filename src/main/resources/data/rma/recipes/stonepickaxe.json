@@ -1,25 +1,19 @@
 {
-  "type": "rma:fourcrafter",
-  "ingredients": [
-    { "item": "minecraft:stone" },
-    { "item": "minecraft:stone" },
-    { "item": "minecraft:stone" },
-    { "item": "minecraft:stone" },
-    { "item": "minecraft:stone" },
-    { "item": "minecraft:stone" },
-    { "item": "minecraft:stone" },
-    { "item": "minecraft:stone" },
-    { "item": "minecraft:stone" },
-    { "item": "minecraft:stone" },
-    { "item": "minecraft:stone" },
-    { "item": "minecraft:stone" },
-    { "item": "minecraft:stone" },
-    { "item": "minecraft:stone" },
-    { "item": "minecraft:stone" },
-    { "item": "minecraft:stone" }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    " # ",
+    " # "
   ],
+  "key": {
+    "X": {
+      "item": "rma:rock"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
   "result": {
-    "item": "minecraft:diamond_sword",
-    "count": 1
+    "item": "rma:stonepickaxe"
   }
 }

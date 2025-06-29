@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    " # ",
+    " # "
+  ],
+  "key": {
+    "X": {
+      "item": "rma:hsteelingot"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "rma:hsteelpickaxe"
+  }
+}

@@ -1,6 +1,5 @@
 package Roma.block;
 
-import Roma.block.custom.FourCraftingBlock;
 import Roma.item.Moditems;
 import Roma.roma;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -109,8 +108,7 @@ public class ModBlocks {
                             .explosionResistance(5f)
                             .requiresCorrectToolForDrops()));
 
-    public static final RegistryObject<Block> FOURCRAFTING = registerBlock("fourcrafting",
-            () -> new FourCraftingBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)));
+
 
 
 

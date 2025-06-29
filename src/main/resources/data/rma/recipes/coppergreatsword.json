@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " RR",
+    "RXR",
+    "#  "
+  ],
+  "key": {
+    "X": {
+      "item": "rma:copperingot"
+    },
+    "R": {
+      "item": "rma:copperblade"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "rma:coppergreatsword"
+  }
+}

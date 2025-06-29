@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RRX",
+    " #R",
+    "# R"
+  ],
+  "key": {
+    "X": {
+      "item": "rma:planks"
+    },
+    "R": {
+      "item": "rma:woodaxe"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "rma:woodebattleaxe"
+  }
+}

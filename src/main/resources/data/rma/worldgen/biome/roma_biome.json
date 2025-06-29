@@ -1,4 +1,5 @@
 {
+  "temperature_modifier": "none",
   "carvers": {
     "air": [
       "minecraft:cave",
@@ -28,7 +29,19 @@
     "water_fog_color": 4159204
   },
   "features": [
-    "minecraft:underground_ores"
+    [
+      "rma:iron_ore_placed",
+      "rma:copper_ore_placed",
+      "rma:zinc_ore_placed",
+      "rma:aluminum_ore_placed",
+      "rma:gold_ore_placed",
+      "rma:nickel_ore_placed",
+      "rma:cobalt_ore_placed",
+      "rma:platinum_ore_placed",
+      "rma:tin_ore_placed",
+      "rma:chromium_ore_placed",
+      "rma:silver_ore_placed"
+    ]
   ],
   "has_precipitation": true,
   "spawn_costs": {},

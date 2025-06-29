@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    " # ",
+    " # "
+  ],
+  "key": {
+    "X": {
+      "item": "rma:superalloyingot"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "rma:superalloypickaxe"
+  }
+}

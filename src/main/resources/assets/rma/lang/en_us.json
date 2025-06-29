@@ -92,5 +92,18 @@
   "item.rma.hsteelgreatsword": "High Grade Steel Greatsword",
   "item.rma.superalloygreatsword": "Superalloy Greatsword",
   "item.rma.superalloypickaxe": "Superalloy Pickaxe",
-  "block.rma.fourcrafting": "4x4 Crafting Table"
+  "item.rma.ironblade": "Iron Blade",
+  "item.rma.copperblade": "Copper Blade",
+  "item.rma.woodblade": "Wooden Blade",
+  "item.rma.stoneblade": "Stone Blade",
+  "item.rma.brassblade": "Brass Blade",
+  "item.rma.bronzeblade": "Bronze Blade",
+  "item.rma.lsteelblade": "Low Grade Blade ",
+  "item.rma.hsteelblade": "High Grade Blade ",
+  "item.rma.superalloyblade": "Superalloy Blade",
+  "item.rma.ironhoe": "Iron Hoe",
+  "item.rma.stonehoe": "Stone Hoe",
+  "item.rma.bronzeaxe": "Bronze Axe",
+  "item.rma.lsteelaxe": "Low Grade Axe",
+  "item.rma.copperaxe": "Copper Axe"
 }

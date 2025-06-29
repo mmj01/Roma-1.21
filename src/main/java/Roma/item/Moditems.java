@@ -78,6 +78,40 @@ public class Moditems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WHEAT = ITEMS.register("wheat",
             () -> new Item(new Item.Properties().food(ModFoodProperties.WHEAT)));
+    public static final RegistryObject<Item> IRONBLADE = ITEMS.register("ironblade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> WOODBLADE = ITEMS.register("woodblade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> STONEBLADE = ITEMS.register("stoneblade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COPPERBLADE = ITEMS.register("copperblade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRASSBLADE = ITEMS.register("brassblade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRONZEBLADE = ITEMS.register("bronzeblade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LSTEELBLADE = ITEMS.register("lsteelblade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> HSTEELBLADE = ITEMS.register("hsteelblade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SUPERALLOYBLADE = ITEMS.register("superalloyblade",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> IRONPLATE = ITEMS.register("ironplate",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COPPERPLATE = ITEMS.register("copperplate",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRASSPLATE = ITEMS.register("brassplate",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRONZEPLATE = ITEMS.register("bronzeplate",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LSTEELPLATE = ITEMS.register("lsteelplate",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> HSTEELPLATE = ITEMS.register("hsteelplate",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SUPERALLOYPLATE = ITEMS.register("superalloyplate",
+            () -> new Item(new Item.Properties()));
+
 
 
 
@@ -94,6 +128,12 @@ public class Moditems {
             () -> new AxeItem(ModToolTiers.HSTEEL,new Item.Properties()));
     public static final RegistryObject<Item> SUPERALLOYAXE = ITEMS.register("superalloyaxe",
             () -> new AxeItem(ModToolTiers.SUPERALLOY,new Item.Properties()));
+    public static final RegistryObject<Item> BRONZEAXE = ITEMS.register("bronzeaxe",
+            () -> new AxeItem(ModToolTiers.IRON,new Item.Properties()));
+    public static final RegistryObject<Item> LSTEELAXE = ITEMS.register("lsteelaxe",
+            () -> new AxeItem(ModToolTiers.STONE,new Item.Properties()));
+    public static final RegistryObject<Item> COPPERAXE = ITEMS.register("copperaxe",
+            () -> new AxeItem(ModToolTiers.WOOD,new Item.Properties()));
 
     public static final RegistryObject<Item> IRONSHOVEL = ITEMS.register("ironshovel",
             () -> new ShovelItem(ModToolTiers.IRON,new Item.Properties()));
@@ -107,6 +147,11 @@ public class Moditems {
             () -> new ShovelItem(ModToolTiers.HSTEEL,new Item.Properties()));
     public static final RegistryObject<Item> SUPERALLOYSHOVEL = ITEMS.register("superalloyshovel",
             () -> new ShovelItem(ModToolTiers.SUPERALLOY,new Item.Properties()));
+
+    public static final RegistryObject<Item> IRONHOE = ITEMS.register("ironhoe",
+            () -> new HoeItem(ModToolTiers.IRON,new Item.Properties()));
+    public static final RegistryObject<Item> STONEHOE = ITEMS.register("stonehoe",
+            () -> new HoeItem(ModToolTiers.STONE,new Item.Properties()));
 
     public static final RegistryObject<Item> IRONPICKAXE = ITEMS.register("ironpickaxe",
             () -> new PickaxeItem(ModToolTiers.IRON,new Item.Properties()));
@@ -185,6 +230,117 @@ public class Moditems {
 
     public static final RegistryObject<Item> SUPERALLOYBATTLEAXE = ITEMS.register("superalloybattleaxe",
             () -> new ReachItem(ModToolTiers.SUPERALLOY, 6,-2, 5, 3, new Item.Properties()));
+
+    public static final RegistryObject<Item> COPPERHELMET = ITEMS.register("copperhelmet",
+            () -> new ArmorItem(ModArmorMaterials.COPPERARMORMATERIAL, ArmorItem.Type.HELMET,
+                                        new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(7))));
+
+    public static final RegistryObject<Item> COPPERCHESTPLATE = ITEMS.register( "copperchestplate",
+            () -> new ArmorItem(ModArmorMaterials.COPPERARMORMATERIAL, ArmorItem.Type.CHESTPLATE,
+                                        new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability( 7))));
+
+    public static final RegistryObject<Item> COPPERLEGGINGS = ITEMS.register( "copperleggings",
+            () -> new ArmorItem(ModArmorMaterials.COPPERARMORMATERIAL, ArmorItem.Type.LEGGINGS,
+                                        new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability( 6))));
+
+    public static final RegistryObject<Item> COPPERBOOTS = ITEMS.register( "copperboots",
+            () -> new ArmorItem(ModArmorMaterials.COPPERARMORMATERIAL, ArmorItem.Type.BOOTS,
+                                        new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability( 4))));
+
+    public static final RegistryObject<Item> IRONHELMET = ITEMS.register("ironhelmet",
+            () -> new ArmorItem(ModArmorMaterials.IRONARMORMATERIAL, ArmorItem.Type.HELMET,
+                                        new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability( 7))));
+
+    public static final RegistryObject<Item> IRONCHESTPLATE = ITEMS.register("ironchestplate",
+            () -> new ArmorItem(ModArmorMaterials.IRONARMORMATERIAL, ArmorItem.Type.CHESTPLATE,
+                                        new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(9))));
+
+    public static final RegistryObject<Item> IRONLEGGINGS = ITEMS.register("ironleggings",
+            () -> new ArmorItem(ModArmorMaterials.IRONARMORMATERIAL, ArmorItem.Type.LEGGINGS,
+                                        new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(8))));
+
+    public static final RegistryObject<Item> IRONBOOTS = ITEMS.register("ironboots",
+            () -> new ArmorItem(ModArmorMaterials.IRONARMORMATERIAL, ArmorItem.Type.BOOTS,
+                                        new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(6))));
+    public static final RegistryObject<Item> BRASSHELMET = ITEMS.register("brasshelmet",
+            () -> new ArmorItem(ModArmorMaterials.BRASSARMORMATERIAL, ArmorItem.Type.HELMET,
+                                        new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(5))));
+
+    public static final RegistryObject<Item> BRASSCHESTPLATE = ITEMS.register("brasschestplate",
+            () -> new ArmorItem(ModArmorMaterials.BRASSARMORMATERIAL, ArmorItem.Type.CHESTPLATE,
+                                        new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(7))));
+
+    public static final RegistryObject<Item> BRASSLEGGINGS = ITEMS.register("brassleggings",
+            () -> new ArmorItem(ModArmorMaterials.BRASSARMORMATERIAL, ArmorItem.Type.LEGGINGS,
+                                        new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(6))));
+
+    public static final RegistryObject<Item> BRASSBOOTS = ITEMS.register("brassboots",
+            () -> new ArmorItem(ModArmorMaterials.BRASSARMORMATERIAL, ArmorItem.Type.BOOTS,
+                                        new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(4))));
+
+    public static final RegistryObject<Item> BRONZEHELMET = ITEMS.register("bronzehelmet",
+            () -> new ArmorItem(ModArmorMaterials.BRONZEARMORMATERIAL, ArmorItem.Type.HELMET,
+                                        new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(5))));
+
+    public static final RegistryObject<Item> BRONZECHESTPLATE = ITEMS.register("bronzechestplate",
+            () -> new ArmorItem(ModArmorMaterials.BRONZEARMORMATERIAL, ArmorItem.Type.CHESTPLATE,
+                                        new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(7))));
+
+    public static final RegistryObject<Item> BRONZELEGGINGS = ITEMS.register("bronzeleggings",
+            () -> new ArmorItem(ModArmorMaterials.BRONZEARMORMATERIAL, ArmorItem.Type.LEGGINGS,
+                                        new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(6))));
+
+    public static final RegistryObject<Item> BRONZEBOOTS = ITEMS.register("bronzeboots",
+            () -> new ArmorItem(ModArmorMaterials.BRONZEARMORMATERIAL, ArmorItem.Type.BOOTS,
+                                        new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(4))));
+
+    public static final RegistryObject<Item> LSTEELHELMET = ITEMS.register("lsteelhelmet",
+            () -> new ArmorItem(ModArmorMaterials.LSTEELARMORMATERIAL, ArmorItem.Type.HELMET,
+                                        new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(5))));
+
+    public static final RegistryObject<Item> LSTEELCHESTPLATE = ITEMS.register("lsteelchestplate",
+            () -> new ArmorItem(ModArmorMaterials.LSTEELARMORMATERIAL, ArmorItem.Type.CHESTPLATE,
+                                        new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(7))));
+
+    public static final RegistryObject<Item> LSTEELLEGGINGS = ITEMS.register("lsteelleggings",
+            () -> new ArmorItem(ModArmorMaterials.LSTEELARMORMATERIAL, ArmorItem.Type.LEGGINGS,
+                                        new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(6))));
+
+    public static final RegistryObject<Item> LSTEELBOOTS = ITEMS.register("lsteelboots",
+            () -> new ArmorItem(ModArmorMaterials.LSTEELARMORMATERIAL, ArmorItem.Type.BOOTS,
+                                        new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(4))));
+
+    public static final RegistryObject<Item> HSTEELHELMET = ITEMS.register("hsteelhelmet",
+            () -> new ArmorItem(ModArmorMaterials.HSTEELARMORMATERIAL, ArmorItem.Type.HELMET,
+                                        new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(5))));
+
+    public static final RegistryObject<Item> HSTEELCHESTPLATE = ITEMS.register("hsteelchestplate",
+            () -> new ArmorItem(ModArmorMaterials.HSTEELARMORMATERIAL, ArmorItem.Type.CHESTPLATE,
+                                        new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(7))));
+
+    public static final RegistryObject<Item> HSTEELLEGGINGS = ITEMS.register("hsteelleggings",
+            () -> new ArmorItem(ModArmorMaterials.HSTEELARMORMATERIAL, ArmorItem.Type.LEGGINGS,
+                                        new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(6))));
+
+    public static final RegistryObject<Item> HSTEELBOOTS = ITEMS.register("hsteelboots",
+            () -> new ArmorItem(ModArmorMaterials.HSTEELARMORMATERIAL, ArmorItem.Type.BOOTS,
+                                        new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(4))));
+
+    public static final RegistryObject<Item> SUPERALLOYHELMET = ITEMS.register("superalloyhelmet",
+            () -> new ArmorItem(ModArmorMaterials.SUPERALLOYARMORMATIERAL, ArmorItem.Type.HELMET,
+                                        new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(5))));
+
+    public static final RegistryObject<Item> SUPERALLOYCHESTPLATE = ITEMS.register("superalloychestplate",
+            () -> new ArmorItem(ModArmorMaterials.SUPERALLOYARMORMATIERAL, ArmorItem.Type.CHESTPLATE,
+                                        new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(7))));
+
+    public static final RegistryObject<Item> SUPERALLOYLEGGINGS = ITEMS.register("superalloyleggings",
+            () -> new ArmorItem(ModArmorMaterials.SUPERALLOYARMORMATIERAL, ArmorItem.Type.LEGGINGS,
+                                        new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(6))));
+
+    public static final RegistryObject<Item> SUPERALLOYBOOTS = ITEMS.register("superalloyboots",
+            () -> new ArmorItem(ModArmorMaterials.SUPERALLOYARMORMATIERAL, ArmorItem.Type.BOOTS,
+                                        new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(4))));
 
 
 

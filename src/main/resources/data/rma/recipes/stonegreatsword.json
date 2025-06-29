@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " RR",
+    "RXR",
+    "#  "
+  ],
+  "key": {
+    "X": {
+      "item": "rma:rock"
+    },
+    "R": {
+      "item": "rma:stonebalde"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "rma:stonegreatsword"
+  }
+}

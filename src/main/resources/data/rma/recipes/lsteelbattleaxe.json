@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RRX",
+    " #R",
+    "# R"
+  ],
+  "key": {
+    "X": {
+      "item": "rma:lsteelingot"
+    },
+    "R": {
+      "item": "rma:lsteelaxe"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "rma:lsteelbattleaxe"
+  }
+}

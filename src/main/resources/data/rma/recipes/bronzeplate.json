@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX ",
+    "XXX",
+    " XX"
+  ],
+  "key": {
+    "X": {
+      "item": "rma:bronzeingot"
+    }
+  },
+  "result": {
+    "item": "rma:bronzeplate"
+  }
+}

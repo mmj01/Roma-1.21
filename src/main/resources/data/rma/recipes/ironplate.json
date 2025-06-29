@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX ",
+    "XXX",
+    " XX"
+  ],
+  "key": {
+    "X": {
+      "item": "rma:ironingot"
+    }
+  },
+  "result": {
+    "item": "rma:ironplate"
+  }
+}

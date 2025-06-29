@@ -98,6 +98,56 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
                 output.accept(Moditems.SUPERALLOYGREATSWORD.get());
                 output.accept(Moditems.SUPERALLOYPICKAXE.get());
                 output.accept(Moditems.SUPERALLOYSHOVEL.get());
+                output.accept(Moditems.BRASSBLADE.get());
+                output.accept(Moditems.IRONBLADE.get());
+                output.accept(Moditems.COPPERBLADE.get());
+                output.accept(Moditems.STONEBLADE.get());
+                output.accept(Moditems.HSTEELBLADE.get());
+                output.accept(Moditems.LSTEELBLADE.get());
+                output.accept(Moditems.BRONZEBLADE.get());
+                output.accept(Moditems.SUPERALLOYBLADE.get());
+                output.accept(Moditems.WOODBLADE.get());
+                output.accept(Moditems.COPPERAXE.get());
+                output.accept(Moditems.BRONZEAXE.get());
+                output.accept(Moditems.LSTEELAXE.get());
+                output.accept(Moditems.IRONHOE.get());
+                output.accept(Moditems.STONEHOE.get());
+                output.accept(Moditems.IRONHELMET.get());
+                output.accept(Moditems.IRONBOOTS.get());
+                output.accept(Moditems.IRONLEGGINGS.get());
+                output.accept(Moditems.IRONCHESTPLATE.get());
+                output.accept(Moditems.COPPERBOOTS.get());
+                output.accept(Moditems.COPPERHELMET.get());
+                output.accept(Moditems.COPPERLEGGINGS.get());
+                output.accept(Moditems.COPPERCHESTPLATE.get());
+                output.accept(Moditems.BRASSBOOTS.get());
+                output.accept(Moditems.BRASSLEGGINGS.get());
+                output.accept(Moditems.BRASSCHESTPLATE.get());
+                output.accept(Moditems.BRASSHELMET.get());
+                output.accept(Moditems.BRONZEBOOTS.get());
+                output.accept(Moditems.BRONZEHELMET.get());
+                output.accept(Moditems.BRONZECHESTPLATE.get());
+                output.accept(Moditems.BRONZELEGGINGS.get());
+                output.accept(Moditems.LSTEELBOOTS.get());
+                output.accept(Moditems.LSTEELHELMET.get());
+                output.accept(Moditems.LSTEELCHESTPLATE.get());
+                output.accept(Moditems.LSTEELLEGGINGS.get());
+                output.accept(Moditems.HSTEELBOOTS.get());
+                output.accept(Moditems.HSTEELCHESTPLATE.get());
+                output.accept(Moditems.HSTEELLEGGINGS.get());
+                output.accept(Moditems.HSTEELHELMET.get());
+                output.accept(Moditems.SUPERALLOYBOOTS.get());
+                output.accept(Moditems.SUPERALLOYLEGGINGS.get());
+                output.accept(Moditems.SUPERALLOYHELMET.get());
+                output.accept(Moditems.SUPERALLOYCHESTPLATE.get());
+                output.accept(Moditems.IRONPLATE.get());
+                output.accept(Moditems.COPPERPLATE.get());
+                output.accept(Moditems.BRASSPLATE.get());
+                output.accept(Moditems.BRONZEPLATE.get());
+                output.accept(Moditems.LSTEELPLATE.get());
+                output.accept(Moditems.HSTEELPLATE.get());
+                output.accept(Moditems.SUPERALLOYPLATE.get());
+
 
 
 
@@ -126,7 +176,6 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
                 output.accept(ModBlocks.COBALTORE.get());
                 output.accept(ModBlocks.SUPERMARBLE.get());
                 output.accept(ModBlocks.COALORE.get());
-                output.accept(ModBlocks.FOURCRAFTING.get());
                 output.accept(ModBlocks.DIRT.get());
                 output.accept(ModBlocks.SAND.get());
                 output.accept(ModBlocks.GRASS.get());
