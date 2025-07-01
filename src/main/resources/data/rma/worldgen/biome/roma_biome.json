@@ -40,8 +40,13 @@
       "rma:platinum_ore_placed",
       "rma:tin_ore_placed",
       "rma:chromium_ore_placed",
-      "rma:silver_ore_placed"
-    ]
+      "rma:silver_ore_placed",
+      "rma:coal_ore_placed"
+    ],
+    [],
+    [],
+    [],
+    ["rma:cypress_placed"]
   ],
   "has_precipitation": true,
   "spawn_costs": {},

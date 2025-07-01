@@ -1,8 +1,11 @@
 {
-  "parent": "minecraft:block/cube_bottom_top",
+  "parent": "block/cube",
   "textures": {
-    "top": "rma:block/grasstop",
-    "bottom": "rma:block/dirt",
-    "side": "rma:block/grass"
+    "down": "rma:block/dirt",
+    "up": "rma:block/grasstop",
+    "north": "rma:block/grass",
+    "south": "rma:block/grass",
+    "west": "rma:block/grass",
+    "east": "rma:block/grass"
   }
 }

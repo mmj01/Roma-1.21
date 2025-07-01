@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {
+    "item": "rma:rawtin"
+  },
+  "result": {
+    "id": "rma:tiningot"
+  },
+  "cookingtime": 9600
+}

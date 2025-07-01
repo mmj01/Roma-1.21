@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "rma:item/brassaxe"
+    "layer0": "rma:item/lsteelbattleaxe"
   }
 }

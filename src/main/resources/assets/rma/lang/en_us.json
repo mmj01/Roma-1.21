@@ -53,7 +53,6 @@
   "item.rma.wheat": "Wheat",
   "item.rma.wheatseeds": "Wheatseeds",
   "item.rma.ironaxe": "Iron Axe",
-  "item.rma.copperaxe": "Copper Axe",
   "item.rma.woodaxe": "Wooden Axe",
   "item.rma.stoneaxe": "Stone Axe",
   "item.rma.brassaxe": "Brass Axe",
@@ -105,5 +104,12 @@
   "item.rma.stonehoe": "Stone Hoe",
   "item.rma.bronzeaxe": "Bronze Axe",
   "item.rma.lsteelaxe": "Low Grade Axe",
-  "item.rma.copperaxe": "Copper Axe"
+  "item.rma.copperaxe": "Copper Axe",
+  "block.rma.cypresslog": "Cypress Log",
+  "block.rma.cypresswood": "Cypress Wood",
+  "block.rma.cypressleaves": "Cypress Leaves",
+  "block.rma.cypressplanks": "Cypress Planks",
+  "block.rma.strippedcypresslog": "Stripped Cypress Log",
+  "block.rma.strippedcypresswood": "Stripped Cypress Wood",
+  "block.rma.cypresssapling": "Cypress Sapling"
 }

@@ -1,9 +1,12 @@
 package Roma.worldgen;
 
+import Roma.block.ModBlocks;
 import Roma.roma;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -33,32 +36,41 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SILVER = registerKey("silver_ore_placed");
     public static final ResourceKey<PlacedFeature> ZINC = registerKey("zinc_ore_placed");
     public static final ResourceKey<PlacedFeature> NICKEL = registerKey("nickel_ore_placed");
+    public static final ResourceKey<PlacedFeature> COAL = registerKey("coal_ore_placed");
+    public static final ResourceKey<PlacedFeature> CYPRESS = registerKey("cypress_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configured = context.lookup(Registries.CONFIGURED_FEATURE);
 
+        register(context, CYPRESS, configured.getOrThrow(ModConfiguredFeatures.CYPRESS),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(30, 0.9f, 10),
+                        ModBlocks.CYPRESSSAPLING.get()));
+
+
+        register(context, COAL, configured.getOrThrow(ModConfiguredFeatures.COAL),
+                ModOrePlacement.commonOrePlacement(32, HeightRangePlacement.triangle(VerticalAnchor.absolute(-192), VerticalAnchor.absolute(0))));
         register(context, COPPER, configured.getOrThrow(ModConfiguredFeatures.COPPER),
-                ModOrePlacement.commonOrePlacement(17, HeightRangePlacement.triangle(VerticalAnchor.absolute(-192), VerticalAnchor.absolute(150))));
+                ModOrePlacement.commonOrePlacement(16, HeightRangePlacement.triangle(VerticalAnchor.absolute(-192), VerticalAnchor.absolute(0))));
         register(context, ALUMINUM, configured.getOrThrow(ModConfiguredFeatures.ALUMINUM),
-                ModOrePlacement.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(128))));
+                ModOrePlacement.commonOrePlacement(6, HeightRangePlacement.uniform(VerticalAnchor.absolute(-192), VerticalAnchor.absolute(0))));
         register(context, IRON, configured.getOrThrow(ModConfiguredFeatures.IRON),
-                ModOrePlacement.commonOrePlacement(12, HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
+                ModOrePlacement.commonOrePlacement(12, HeightRangePlacement.uniform(VerticalAnchor.absolute(-192), VerticalAnchor.absolute(0))));
         register(context, COBALT, configured.getOrThrow(ModConfiguredFeatures.COBALT),
-                ModOrePlacement.commonOrePlacement(8, HeightRangePlacement.uniform(VerticalAnchor.absolute(-48), VerticalAnchor.absolute(40))));
+                ModOrePlacement.commonOrePlacement(6, HeightRangePlacement.uniform(VerticalAnchor.absolute(-192), VerticalAnchor.absolute(0))));
         register(context, CHROMIUM, configured.getOrThrow(ModConfiguredFeatures.CHROMIUM),
-                ModOrePlacement.commonOrePlacement(8, HeightRangePlacement.uniform(VerticalAnchor.absolute(-48), VerticalAnchor.absolute(40))));
+                ModOrePlacement.commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.absolute(-192), VerticalAnchor.absolute(0))));
         register(context, PLATINUM, configured.getOrThrow(ModConfiguredFeatures.PLATINUM),
-                ModOrePlacement.commonOrePlacement(6, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(16))));
+                ModOrePlacement.commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.absolute(-192), VerticalAnchor.absolute(0))));
         register(context, GOLD, configured.getOrThrow(ModConfiguredFeatures.GOLD),
-                ModOrePlacement.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(32))));
+                ModOrePlacement.commonOrePlacement(8, HeightRangePlacement.uniform(VerticalAnchor.absolute(-192), VerticalAnchor.absolute(0))));
         register(context, TIN, configured.getOrThrow(ModConfiguredFeatures.TIN),
-                ModOrePlacement.commonOrePlacement(12, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(96))));
+                ModOrePlacement.commonOrePlacement(8, HeightRangePlacement.uniform(VerticalAnchor.absolute(-192), VerticalAnchor.absolute(0))));
         register(context, SILVER, configured.getOrThrow(ModConfiguredFeatures.SILVER),
-                ModOrePlacement.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(-32), VerticalAnchor.absolute(60))));
+                ModOrePlacement.commonOrePlacement(8, HeightRangePlacement.uniform(VerticalAnchor.absolute(-192), VerticalAnchor.absolute(0))));
         register(context, ZINC, configured.getOrThrow(ModConfiguredFeatures.ZINC),
-                ModOrePlacement.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(70))));
+                ModOrePlacement.commonOrePlacement(8, HeightRangePlacement.uniform(VerticalAnchor.absolute(-192), VerticalAnchor.absolute(0))));
         register(context, NICKEL, configured.getOrThrow(ModConfiguredFeatures.NICKEL),
-                ModOrePlacement.commonOrePlacement(8, HeightRangePlacement.uniform(VerticalAnchor.absolute(-40), VerticalAnchor.absolute(64))));
+                ModOrePlacement.commonOrePlacement(7, HeightRangePlacement.uniform(VerticalAnchor.absolute(-192), VerticalAnchor.absolute(0))));
     }
     private static ResourceKey<PlacedFeature> registerKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(roma.MOD_ID, name));

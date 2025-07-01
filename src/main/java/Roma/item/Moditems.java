@@ -14,6 +14,8 @@ public class Moditems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, roma.MOD_ID);
 
+
+
     public static final RegistryObject<Item> IRONINGOT = ITEMS.register("ironingot",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> COBALTINGOT = ITEMS.register("cobaltingot",
@@ -95,6 +97,16 @@ public class Moditems {
     public static final RegistryObject<Item> HSTEELBLADE = ITEMS.register("hsteelblade",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SUPERALLOYBLADE = ITEMS.register("superalloyblade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COMPRESSEDCOAL = ITEMS.register("compressedcoal",
+            () -> new FuelItem(new Item.Properties(), 10800));
+    public static final RegistryObject<Item> ULTRADENSECOAL = ITEMS.register("ultradensecoal",
+            () -> new FuelItem(new Item.Properties(), 97200));
+    public static final RegistryObject<Item> ALLOYMIXER = ITEMS.register("alloymixer",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRONZEALLOYAMALGAM = ITEMS.register("bronzealloyamalgam",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRASSALLOYAMALGAM = ITEMS.register("brassalloyamalgam",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> IRONPLATE = ITEMS.register("ironplate",

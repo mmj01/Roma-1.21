@@ -1,14 +1,22 @@
 package Roma.block;
 
+import Roma.block.custom.ModGrass;
+import Roma.block.custom.ModSaplingBlock;
 import Roma.item.Moditems;
+import Roma.block.custom.ModFlammableRotatedPillarBlock;
 import Roma.roma;
+import Roma.worldgen.tree.ModTreeGrower;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -25,9 +33,59 @@ public class ModBlocks {
             ()-> new DropExperienceBlock(UniformInt.of(50,60), BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
                     .strength(75f).explosionResistance(16f).requiresCorrectToolForDrops()));
 
-    public static final RegistryObject<Block> GRASS = registerBlock("grass",
-            ()-> new DropExperienceBlock(UniformInt.of(1,1), BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)
-                    .strength(2f).explosionResistance(1f)));
+    public static final RegistryObject<Block> CYPRESSSAPLING = registerBlock("cypresssapling",
+            () -> new SaplingBlock(ModTreeGrower.CYPRESS, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
+
+
+
+    public static final RegistryObject<Block> CYPRESSLOG = registerBlock("cypresslog",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG).strength(3f)));
+    public static final RegistryObject<Block> CYPRESSWOOD = registerBlock("cypresswood",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).strength(3f)));
+    public static final RegistryObject<Block> STRIPPEDCYPRESSLOG = registerBlock("strippedcypresslog",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG).strength(3f)));
+    public static final RegistryObject<Block> STRIPPEDCYPRESSWOOD = registerBlock("strippedcypresswood",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD).strength(3f)));
+
+
+
+    public static final RegistryObject<Block> CYPRESSPLANKS = registerBlock("cypressplanks",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)) {
+                @Override
+                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return true;
+                }
+
+                @Override
+                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 20;
+                }
+
+                @Override
+                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 5;
+                }
+            });
+    public static final RegistryObject<Block> CYPRESSLEAVES = registerBlock("cypressleaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)){
+                @Override
+                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return true;
+                }
+
+                @Override
+                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 60;
+                }
+
+                @Override
+                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 30;
+                }
+            });
+
+    public static final RegistryObject<Block> GRASS = BLOCKS.register("grass",
+            () -> new ModGrass(BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK)));
     public static final RegistryObject<Block> SAND = registerBlock("sand",
             ()-> new DropExperienceBlock(UniformInt.of(1,1), BlockBehaviour.Properties.ofFullCopy(Blocks.SAND)
                     .strength(2f).explosionResistance(1f)));

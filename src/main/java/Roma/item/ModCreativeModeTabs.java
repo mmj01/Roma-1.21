@@ -18,6 +18,15 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
     () -> CreativeModeTab.builder().icon(()-> new ItemStack(ModBlocks.MARBLE.get()))
             .title(Component.translatable("ROMA"))
             .displayItems((itemDisplayParameters, output) ->{
+                output.accept(ModBlocks.CYPRESSLOG.get());
+                output.accept(ModBlocks.CYPRESSWOOD.get());
+                output.accept(ModBlocks.STRIPPEDCYPRESSLOG.get());
+                output.accept(ModBlocks.STRIPPEDCYPRESSWOOD.get());
+
+                output.accept(ModBlocks.CYPRESSPLANKS.get());
+                output.accept(ModBlocks.CYPRESSSAPLING.get());
+
+                output.accept(ModBlocks.CYPRESSLEAVES.get());
                 output.accept(Moditems.IRONINGOT.get());
                 output.accept(Moditems.COBALTINGOT.get());
                 output.accept(Moditems.ALUMINUMINGOT.get());
@@ -106,6 +115,8 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
                 output.accept(Moditems.LSTEELBLADE.get());
                 output.accept(Moditems.BRONZEBLADE.get());
                 output.accept(Moditems.SUPERALLOYBLADE.get());
+                output.accept(Moditems.ULTRADENSECOAL.get());
+                output.accept(Moditems.COMPRESSEDCOAL.get());
                 output.accept(Moditems.WOODBLADE.get());
                 output.accept(Moditems.COPPERAXE.get());
                 output.accept(Moditems.BRONZEAXE.get());
@@ -154,8 +165,8 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
 
                 
                 //BLOCKS ->
-                
-                
+
+
                 output.accept(ModBlocks.MARBLE.get());
                 output.accept(ModBlocks.ROCK.get());
                 output.accept(ModBlocks.BASALT.get());
@@ -178,7 +189,7 @@ public static final RegistryObject<CreativeModeTab> ROMA = CREATIVE_MODE_TABS.re
                 output.accept(ModBlocks.COALORE.get());
                 output.accept(ModBlocks.DIRT.get());
                 output.accept(ModBlocks.SAND.get());
-                output.accept(ModBlocks.GRASS.get());
+
 
 
 
